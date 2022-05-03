@@ -36,6 +36,7 @@ The requirements and versions specified during installation are listed below. An
 	pip install --editable .
 	# optional, delete docs
 	rm -r docs
+	rm README.md
 	
 # Windows
 	cd <your-directory>
@@ -44,6 +45,7 @@ The requirements and versions specified during installation are listed below. An
 	pip install --editable .
 	# optional, delete docs
 	rmdir /s docs
+	del README.md
 ```
 
 3. Add location history [Takeout](https://takeout.google.com/) export.
