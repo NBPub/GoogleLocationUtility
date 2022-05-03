@@ -55,10 +55,10 @@ def welcome(selection):
     
     # Docs, ReadDocs
     if selection == 'docs':
-        click.secho('https://github.com/NBPub/GoogleLocationUtility/docs/Getting Started.md', fg='blue')    
+        click.secho('https://github.com/NBPub/GoogleLocationUtility/blob/main/docs/Getting Started.md', fg='blue')    
     elif selection == 'docs_read':
         click.secho('Opening https://github.com/NBPub/GoogleLocationUtility/docs/Getting Started.md', fg='blue')
-        click.launch('https://github.com/NBPub/GoogleLocationUtility/docs/Getting%20Started.md')
+        click.launch('https://github.com/NBPub/GoogleLocationUtility/blob/main/docs/Getting%20Started.md#getting-started')
     
     # Location Parse
     elif selection == 'loc_parse':
