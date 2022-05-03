@@ -23,7 +23,7 @@ def folder_check():
 def filestatus():
     # Package, Version
     from importlib.metadata import version 
-    click.secho(f'GLU version {version("GLU")}\n', fg = 'yellow')
+    click.secho(f'GLU version {version("GoogleLocationUtility")}\n', fg = 'yellow')
     
     folder_check()
     
