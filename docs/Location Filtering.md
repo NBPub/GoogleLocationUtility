@@ -1,6 +1,6 @@
 # Location Filtering
 
-[location_filter.py](/GLU/src/GLU/location_filter.py)
+[location_filter.py](/src/GLU/location_filter.py)
 
 ## Invocation
 
