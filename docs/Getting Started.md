@@ -2,7 +2,7 @@
 
 **Contents**
 
-[Installation](/docs/Getting%20Started.md#Installation) • [Usage](/docs/Getting%20Started.md#Usage) • [Configuration.ini - GLU settings](/docs/Getting%20Started.md#Configuration.ini)
+[Installation](/docs/Getting%20Started.md#Installation) • [Usage](/docs/Getting%20Started.md#Usage) • [Configuration.ini - GLU settings](/docs/Getting%20Started.md#configurationini)
 
 **Function Pages**
 + [Location Processing](/docs/Location%20Processing.md)
@@ -14,7 +14,7 @@
 
 ## Installation
 
-See [Overview](/README.md#Installation) for installation instructions and steps for activating a virtual environment in the project folder.
+See [Overview](/README.md#installation-quickstart) for installation instructions and steps for activating a virtual environment in the project folder.
 
 ## Usage
 
@@ -38,13 +38,13 @@ Some functions may ask for user inputs. Inputs come in two flavors:
 
 ---
 
-A [guide](/docs/Getting%20Started.md#Configuration.ini) to setting up *Configuration.ini*, which resides in the root folder of the project, begins below.
+A [guide](/docs/Getting%20Started.md#configurationini) to setting up *Configuration.ini*, which resides in the root folder of the project, begins below.
 
 ## Configuration.ini
 **Contents**
 
 [LocationReport](/docs/Getting%20Started.md#LocationReport) • [Filter](/docs/Getting%20Started.md#Filter) • 
-[geoTag](/docs/Getting%20Started.md#geoTag) • [geoStrip](/docs/Getting%20Started.md#geoStrip) • [Map](/docs/Getting%20Started.md#Maps)
+[geoTag](/docs/Getting%20Started.md#geoTag) • [geoStrip](/docs/Getting%20Started.md#geoStrip) • [Map](/docs/Getting%20Started.md#Map)
 
 
 *\<your-directory\>/Configuration.ini* contains specifications for various GLU operations, enter `home --config` to open in default editor. 
