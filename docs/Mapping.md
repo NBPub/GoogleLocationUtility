@@ -1,6 +1,6 @@
 # Location Mapping
 
-[mapMe.py](/GLU/src/GLU/mapMe.py)
+[mapMe.py](/src/GLU/mapMe.py)
 
 ## Invocation
 
