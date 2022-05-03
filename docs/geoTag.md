@@ -1,8 +1,8 @@
-[geoStrip](/docs/geoTag.md#geoStrip)
+*Information for [geoStrip](/docs/geoTag.md#geoStrip) is below*
 
 # geoTag
 
-[geotag.py](/GLU/src/GLU/geotag.py)
+[geotag.py](/src/GLU/geotag.py)
 
 ## Invocation
 
@@ -58,7 +58,7 @@ To be bragged about soon.
 
 # geoStrip
 
-[geostrip.py](/GLU/src/GLU/geostrip.py)
+[geostrip.py](/src/GLU/geostrip.py)
 
 ## Invocation
 
