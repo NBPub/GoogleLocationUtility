@@ -23,8 +23,9 @@ The requirements and versions specified during installation are listed below. An
 
 ### Installation, Quickstart
 
-1. Download and extract [GLU](https://github.com/NBPub/GoogleLocationUtility/archive/refs/heads/main.zip) into a new directory. 
+1. Download and extract [GLU](https://github.com/NBPub/GoogleLocationUtility/archive/refs/heads/main.zip) into a new directory `<your-directory>`. 
 	- Click the green **Code** button at the top of the page for various download options.
+	- The "docs" folder can be deleted
 		
 2. Create a virtual environment within the directory. Activate environment and install requirements. Note that "." should be included, and indicates the current directory.
 ```
@@ -33,12 +34,16 @@ The requirements and versions specified during installation are listed below. An
 	python3 -m venv venv
 	. venv/bin/activate
 	pip install --editable .
+	# optional, delete docs
+	rm -r docs
 	
 # Windows
 	cd <your-directory>
 	py -3 -m venv venv
 	venv\Scripts\activate
 	pip install --editable .
+	# optional, delete docs
+	rmdir /s docs
 ```
 
 3. Add location history [Takeout](https://takeout.google.com/) export.
