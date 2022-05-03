@@ -1,6 +1,6 @@
 # Location Processing
 
-[location_parse.py](/GLU/src/GLU/location_parse.py)
+[location_parse.py](/src/GLU/location_parse.py)
 
 ## Invocation
 
@@ -18,7 +18,7 @@
 	- May take some time and will consume RAM
 
 2. **Cleaning**
-	- Remove all but GPS coordinates, accuracy, source, deviceTag, timestamp. See [location history data information](/docs/Location%20Processing.md#Location%20History%20Data%20Descriptions).
+	- Remove all but GPS coordinates, accuracy, source, deviceTag, timestamp. See [location history data information](/docs/Location%20Processing.md#location-history-data-descriptions).
 		- Other information may be kept in future versions, in my case they were mostly empty.
 	- Remove records with negative accuracy values.
 	- Ensure **source** values are all uppercase, "WIFI" and "wifi" should be the same.
