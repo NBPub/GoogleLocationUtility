@@ -42,22 +42,6 @@ def geotag():
     else:
         click.secho(click.format_filename(source),fg='blue')
         click.secho('geoTag folder set\n\n',fg='green')
-    
-    # source = None    
-    # while source == None:
-        # try:
-            # source = input('Choose folder to geotag: ')
-            # if source == 'exit':
-                # return 'Aborted!', 'yellow'
-            # elif Path(source).exists():
-                # source = Path(source)
-            # else:
-                # click.secho('Folder not detected',fg = 'red')
-                # source = None
-        # except Exception as e:
-            # click.secho(str(e),fg = 'red')
-            # source = None
-            
 
     # Settings Read, confirm continue
     subfolders, overwrite, hemi, location_data_path, timezone, flag_accuracy, flag_time, detailed_report, open_mode, photomap, = config_load('geoTag')
@@ -489,4 +473,3 @@ def geotag():
             click.launch(click.format_filename(Path(savefolder, 'results-detailed.html')))    
     
     return '\n\nConcluded GeoTag trial!', 'green'
-    

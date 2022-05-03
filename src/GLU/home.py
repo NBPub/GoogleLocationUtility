@@ -124,5 +124,3 @@ def welcome(selection):
     else:
         click.secho('\n\nEnter "home --help" to get started.', fg='magenta')
     return
-    
-    

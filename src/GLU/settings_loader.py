@@ -179,8 +179,7 @@ def config_load(section):
                 click.secho(f'Error reading remove_devices:\n{str(e)}', fg = 'red')
                 remove_devices = 'abort'
         else:
-            remove_devices = None     
-            
+            remove_devices = None       
         return cutoff, remove_sources, remove_devices
     
     elif section =='geoStrip':
@@ -194,7 +193,6 @@ def config_load(section):
                 open_mode = 'locate'
         except:
             open_mode = 'locate'    
-            
         return subfolders, open_mode
     
     elif section == 'geoTag':
@@ -374,7 +372,4 @@ def config_load(section):
             style_by = choice
     
         click.secho(f'\nMapping against {style_by}.', fg = 'green')   
-        
         return timezone, location_data_path, begin, endin, open_mode, style_by
-            
-    

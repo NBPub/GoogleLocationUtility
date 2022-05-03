@@ -20,22 +20,7 @@ def geostrip():
     else:
         click.secho(click.format_filename(source),fg='blue')
         click.secho('geoStrip folder set\n\n', fg='green')
-    
-    # source = None    
-    # while source == None:
-        # try:
-            # source = input('Choose folder to GeoStrip: ')
-            # if source == 'exit':
-                # return 'Aborted!', 'yellow'
-            # elif Path(source).exists():
-                # source = Path(source)
-            # else:
-                # click.secho('Folder not detected',fg = 'red')
-                # source = None
-        # except Exception as e:
-            # click.secho(str(e),fg = 'red')
-            # source = None
-    
+
     # Settings Read
     subfolders, open_mode = config_load('geoStrip')
 
@@ -160,25 +145,3 @@ def geostrip():
             click.launch(click.format_filename(Path(savefolder, 'GeoStrip_results.csv')))
 
     return "\n\nFinished GeoStrip operation", "green"
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    

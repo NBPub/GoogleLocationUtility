@@ -85,5 +85,3 @@ def location_parse(folder, file):
 
 if __name__ == "__main__":
     pass
-
-
