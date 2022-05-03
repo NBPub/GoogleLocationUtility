@@ -1,0 +1,5 @@
+venv
+LocationData
+Outputs
+src/GLU.egg-info
+src/GLU/__pycache__ 
