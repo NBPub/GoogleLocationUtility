@@ -1,6 +1,6 @@
 # Location Reporting
 
-[location_report.py](/GLU/src/GLU/location_report.py)
+[location_report.py](/src/GLU/location_report.py)
 
 ## Invocation
 
@@ -32,7 +32,7 @@
 		- Source distribution for each Devices
 
 4. **Device Maps**
-	- Generate [frequency maps](/docs/Mapping.md#Frequency) for each device.
+	- Generate [frequency maps](/docs/Mapping.md#frequency) for each device.
 	
 5. **Report Writing**
 	- Combine information gathered above into HTML file.
