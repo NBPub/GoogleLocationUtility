@@ -209,7 +209,6 @@ def config_load(section):
             overwrite = config.getboolean('geoTag','overwrite')
         except:
             overwrite = False
-        click.secho(f'\toverwrite={overwrite}', fg = 'magenta')
         try: # Hemisphere Assumption
             hemi = config.get('geoTag','hemi').upper()
             if len(hemi) > 2:

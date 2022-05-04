@@ -28,7 +28,7 @@ def tagmap(results, GPS, name, savefolder):
     hovertimes = [val.tz_convert(results.TZ[i]).strftime('%x %X %Z') for i,val in enumerate(results.Date)] # pretty time for hover label
     results.loc[:,'Match'] = [f"{val.tz_convert(results.TZ[i]).strftime('%x %X %Z')}<br>({results.Lat[i]}, {results.Lon[i]}), Accuracy: {results.accuracy[i]}"\
                   for i,val in enumerate(results.Match)] # match information for hover label
-    results.loc[:,'folder'] = [val.name for val in results.folder] # folder name, this step may be defunct
+    results.loc[:,'folder'] = [val.name for val in results.folder] # folder name
     
     maptitle = f'<b>Photomap: {name}</b><br>\
                {results.Date.min().strftime("%x %Z")} to {results.Date.max().strftime("%x %Z")}'   
@@ -66,7 +66,7 @@ def tagmap(results, GPS, name, savefolder):
         fig1 = px.scatter_mapbox(sub, lat = 'Lat', lon = 'Lon', color = 'filename',
                                  color_discrete_sequence = px.colors.qualitative.Prism,
                                  hover_name = 'filename', zoom=zoom,  title = maptitle,
-                             hover_data = {'folder':False,'Lat':False, 'Lon':False, 'Match':False,
+                             hover_data = {'filename':False,'Lat':False, 'Lon':False, 'Match':False, 'folder':True,
                                            'TZ':False, 'Date':False, 'delta':False, 'accuracy':False,
                                            'Date Taken':(True,hovertimes[start:stop]), 'Match Data': (True, sub.Match)})
         fig1.update_traces(marker={'allowoverlap':False}, marker_size = 18, marker_opacity=0.7)
