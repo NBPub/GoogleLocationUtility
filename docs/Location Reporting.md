@@ -52,7 +52,10 @@
 
 ## Outputs
 
-1. *LocationReport_\<type\>_\<date\>* in **Outputs** directory
+1. ***LocationReport_\<type\>_\<date\>*** in **Outputs** directory, containing . . .
+	- Report as HTML file, displaying all graphs and linking to all maps
+	- Graphs as PNG files
+	- device maps as HTML files within "maps" sub-directory
 
 <details>
   <summary>loc_report example</summary>
