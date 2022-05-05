@@ -48,7 +48,11 @@
 
 ## Outputs
 
-1. *geotag_\<date\>* in **Outputs** directory
+1. ***geotag_\<date\>*** in **Outputs** directory, containing . . .
+	- copies of images with newly added GPS data
+	- results summary as CSV file
+	- *optional* detailed results report as HTML file
+	- *optional* interactive map(s) displaying tagged image locations as HTML file(s)
 
 *Example "results-summary.csv"*
 ![geoTag](/docs/images/geoTag_table.png)
@@ -94,9 +98,12 @@ An optional HTML detailed report can be generated with each geoTag operation. It
 
 ![report3](/docs/images/geoTag_report_3.png)
 
+*Markers are placed at the location matches, lines are drawn from the previously tagged location, if applicable.*
+
 ![report4](/docs/images/geoTag_report_4.png)
 
-*Markers are placed at the location matches, lines are drawn from the previously tagged location, if applicable.*
+*Image marker/line visibility can be toggled in the legend. Relevant information is provided when hovering on markers (location matches) or line origins (existing tags).*
+
 </details>
 
 ---
@@ -135,7 +142,9 @@ An optional HTML detailed report can be generated with each geoTag operation. It
 
 ## Outputs
 
-1. *geostrip_\<date\>* in **Outputs** directory
+1. ***geostrip_\<date\>*** in **Outputs** directory, containing . . .
+	- copies of images with GPS data removed
+	- results summary as CSV file
 
 *Example "GeoStrip_results.csv"*
 
