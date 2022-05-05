@@ -59,12 +59,15 @@
 	<summary><h4>Summary, Tables</h4></summary>
   
 **Heading**
+
 ![Report1](/docs/images/location_report_ex_1.png)
 
 **Accuracy, Timedelta Statistics**
+
 ![Report2](/docs/images/location_report_ex_2.png)
 	
 **Largest Timegaps**
+
 ![Report3](/docs/images/location_report_ex_3.png)
 	
 </details>
@@ -74,7 +77,6 @@
   
 **Accuracy by Source**
 ![plot1](/docs/images/boxer-Accuracy-Source.png)
-
 
 **Accuracy by Device**
 ![plot2](/docs/images/boxer-Accuracy-Device.png)
