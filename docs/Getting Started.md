@@ -39,18 +39,16 @@ Some functions may ask for user inputs. Inputs come in two flavors:
 
 ---
 
-A [guide](/docs/Getting%20Started.md#configurationini) to setting up *Configuration.ini*, which resides in the root folder of the project, begins below.
+A guide to setting up [*Configuration.ini*](/Configuration.ini) , which resides in the root folder of the project, begins below.
 
 ## Configuration.ini
-[Configuration.ini canvas](/Configuration.ini)
 
 **Contents**
-
 [LocationReport](/docs/Getting%20Started.md#LocationReport) • [Filter](/docs/Getting%20Started.md#Filter) • 
 [geoTag](/docs/Getting%20Started.md#geoTag) • [geoStrip](/docs/Getting%20Started.md#geoStrip) • [Map](/docs/Getting%20Started.md#Map)
+<br/><br/>
 
-
-*\<your-directory\>/Configuration.ini* contains specifications for various GLU operations, enter `home --config` to open in default editor. 
+`<your-directory>/Configuration.ini` contains specifications for various GLU operations, enter `home --config` to open in default editor. 
 
 The sections of the file are listed and detailed below. Examples of input types are specified within `= <type>`, and defaults or working examples **in bold**.
 
@@ -186,4 +184,3 @@ tenacity==8.0.1
 # Editable install with no version control (GoogleLocationUtility==0.1.0)
 # -e <your-directory>/src
 ```
-
