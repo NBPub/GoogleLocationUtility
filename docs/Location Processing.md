@@ -2,6 +2,8 @@
 
 [location_parse.py](/src/GLU/location_parse.py)
 
+
+
 ## Invocation
 
 `home --loc_parse`
@@ -42,6 +44,13 @@
 
 1. *parsed_\<date\>.parquet* in **LocationData** directory
 	
+<details>
+  <summary>loc_parse example</summary>
+  
+![Parse1](/docs/images/location_parse.png)
+
+*Parsing operation for ~500MB Records.json file*
+</details>
 	
 ## Location History Data Descriptions
 
