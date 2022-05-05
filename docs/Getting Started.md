@@ -6,8 +6,8 @@
 
 **Function Pages**
 + [Location Processing](/docs/Location%20Processing.md)
-+ [Location Reporting](/docs/Location%Reporting.md)
-+ [Location Filtering](/docs/Location%Filtering.md)
++ [Location Reporting](/docs/Location%20Reporting.md)
++ [Location Filtering](/docs/Location%20Filtering.md)
 + [geoTag and geoStrip](/docs/geoTag.md)
 + [Location Mapping](/docs/Mapping.md)
 	
