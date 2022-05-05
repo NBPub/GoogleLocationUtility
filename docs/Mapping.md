@@ -1,3 +1,12 @@
+#### Function Pages
+[Location Processing](/docs/Location%20Processing.md)
+• [Location Filtering](/docs/Location%20Filtering.md)
+• [Location Reporting](/docs/Location%20Reporting.md)
+• [geoTag and geoStrip](/docs/geoTag.md)
+
+[Getting Started](/docs/Getting%20Started.md)
+
+
 # Location Mapping
 
 [mapMe.py](/src/GLU/mapMe.py)
