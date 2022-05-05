@@ -1,5 +1,15 @@
 *Information for [geoStrip](/docs/geoTag.md#geoStrip) is below*
 
+#### Function Pages
+[Location Processing](/docs/Location%20Processing.md)
+• [Location Reporting](/docs/Location%20Reporting.md)
+• [Location Filtering](/docs/Location%20Filtering.md)
+• [geoStrip](/docs/geoTag.md#geoStrip)
+• [Location Mapping](/docs/Mapping.md)
+
+[Getting Started](/docs/Getting%20Started.md)
+
+
 # geoTag
 
 [geotag.py](/src/GLU/geotag.py)
