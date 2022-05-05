@@ -1,6 +1,6 @@
 #### Function Pages
 [Location Processing](/docs/Location%20Processing.md)
-• [Location Reporting](/docs/Location%Reporting.md)
+• [Location Reporting](/docs/Location%20Reporting.md)
 • [geoTag and geoStrip](/docs/geoTag.md)
 • [Location Mapping](/docs/Mapping.md)
 
