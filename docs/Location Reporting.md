@@ -1,3 +1,11 @@
+#### Function Pages
+[Location Processing](/docs/Location%20Processing.md)
+• [Location Filtering](/docs/Location%20Filtering.md)
+• [geoTag and geoStrip](/docs/geoTag.md)
+• [Location Mapping](/docs/Mapping.md)
+
+[Getting Started](/docs/Getting%20Started.md)
+
 # Location Reporting
 
 [location_report.py](/src/GLU/location_report.py)
@@ -85,7 +93,3 @@
 ![plot3](/docs/images/counter-Source-Device.png)
 	
 </details>
-
-
-
-	
