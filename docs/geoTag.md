@@ -128,4 +128,5 @@ An optional HTML detailed report can be generated with each geoTag operation. It
 1. *geostrip_\<date\>* in **Outputs** directory
 
 *Example "GeoStrip_results.csv"*
+
 ![geoStrip](/docs/images/geoStrip_table.png)
