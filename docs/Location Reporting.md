@@ -46,7 +46,32 @@
 
 1. *LocationReport_\<type\>_\<date\>* in **Outputs** directory
 
-### Graph Examples
+<details>
+  <summary>loc_report example</summary>
+  
+![Report](/docs/images/location_report.png)
+
+</details>
+
+## Sample Report
+
+<details> 
+	<summary><h4>Summary, Tables</h4></summary>
+  
+**Heading**
+![Report1](/docs/images/location_report_ex_1.png)
+
+**Accuracy, Timedelta Statistics**
+![Report2](/docs/images/location_report_ex_2.png)
+	
+**Largest Timegaps**
+![Report3](/docs/images/location_report_ex_3.png)
+	
+</details>
+
+<details> 
+	<summary><h4>Graphs</h4></summary>
+  
 **Accuracy by Source**
 ![plot1](/docs/images/boxer-Accuracy-Source.png)
 
@@ -56,4 +81,9 @@
 
 **Source by Device**
 ![plot3](/docs/images/counter-Source-Device.png)
+	
+</details>
+
+
+
 	
