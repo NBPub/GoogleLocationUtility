@@ -5,11 +5,12 @@
 [Installation](/docs/Getting%20Started.md#Installation) • [Usage](/docs/Getting%20Started.md#Usage) • [Configuration.ini - GLU settings](/docs/Getting%20Started.md#configurationini)
 
 **Function Pages**
-+ [Location Processing](/docs/Location%20Processing.md)
-+ [Location Reporting](/docs/Location%20Reporting.md)
-+ [Location Filtering](/docs/Location%20Filtering.md)
-+ [geoTag and geoStrip](/docs/geoTag.md)
-+ [Location Mapping](/docs/Mapping.md)
++ [Location Processing](/docs/Location%20Processing.md#location-processing)
++ [Location Reporting](/docs/Location%20Reporting.md#location-reporting)
++ [Location Filtering](/docs/Location%20Filtering.md#location-filtering)
++ [geoTag](/docs/geoTag.md#geoTag)
++ [geoStrip](/docs/geoTag.md#geoStrip)
++ [Location Mapping](/docs/Mapping.md#location-mapping)
 	
 
 ## Installation
@@ -41,6 +42,8 @@ Some functions may ask for user inputs. Inputs come in two flavors:
 A [guide](/docs/Getting%20Started.md#configurationini) to setting up *Configuration.ini*, which resides in the root folder of the project, begins below.
 
 ## Configuration.ini
+[Configuration.ini canvas](/Configuration.ini)
+
 **Contents**
 
 [LocationReport](/docs/Getting%20Started.md#LocationReport) • [Filter](/docs/Getting%20Started.md#Filter) • 
