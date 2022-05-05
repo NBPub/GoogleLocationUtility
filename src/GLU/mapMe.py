@@ -69,7 +69,7 @@ def tagmap(results, GPS, name, savefolder):
                              hover_data = {'filename':False,'Lat':False, 'Lon':False, 'Match':False, 'folder':True,
                                            'TZ':False, 'Date':False, 'delta':False, 'accuracy':False,
                                            'Date Taken':(True,hovertimes[start:stop]), 'Match Data': (True, sub.Match)})
-        fig1.update_traces(marker={'allowoverlap':False}, marker_size = 18, marker_opacity=0.7)
+        fig1.update_traces(marker={'allowoverlap':True}, marker_size = 18, marker_opacity=0.7)
         fig1.update_layout(mapbox_style='open-street-map', title_xanchor="center", title_x=0.5, title_y=0.98)
         
         # Line Map for GPS discrepancies
@@ -86,7 +86,7 @@ def tagmap(results, GPS, name, savefolder):
                 fig2 = px.line_mapbox(subline, lat = 'Lat', lon = 'Lon', color = 'Filename', title = maptitle,
                                       zoom = zoom, line_group = 'Filename',  hover_name = 'Filename',
                                       color_discrete_sequence = linecolors,
-                                      hover_data = {'Folder':False,'Lat':True,'Lon':True,'Tag':False, 'Filename':False})
+                                      hover_data = {'Folder':True,'Lat':True,'Lon':True,'Tag':False, 'Filename':False})
                 fig2.update_traces({'line_width':5})
                 fig2.update_layout(mapbox_style='open-street-map', title_xanchor="center", title_x=0.5, title_y=0.98)
             else:
@@ -99,7 +99,7 @@ def tagmap(results, GPS, name, savefolder):
         else: # combine plots
             fig = {
                 "data": [val for val in fig2['data']] + [val for val in fig1['data']],
-                "layout":  fig2['layout']
+                "layout":  fig1['layout']
             }            
         # Save map as html, keep link in list to return
         saveas = Path(savefolder, f'photomap_{i+1}.html')
