@@ -83,7 +83,7 @@ After extraction, the exported Location History files from Google should be in *
 ---
 
 ### Processing
-  - `home --loc_parse` [details](/docs/Location%20Processing.md)
+  - `home --loc_parse` [details](/docs/Location%20Processing.md#location-processing)
 
 Before location data can be used, **Records.json** must be processed. GLU detects **Records.json** within the LocationData folder in the project root: `<your-directory>/LocationData`.
 
@@ -98,7 +98,7 @@ The resulting DataFrame is saved as a [Parquet](https://parquet.apache.org/) fil
 *Example processing operation, with ~500MB Records.json file*
 
 ### Reports
-  - `home --location_report` [details](/docs/Location%20Reporting.md)
+  - `home --location_report` [details](/docs/Location%20Reporting.md#location-reporting)
 
 Reports can be generated from any processed data. Accuracy and time-delta statistics are presented, along with a breakdown of accuracy against source(s) and device(s).
 Maps detailing locations of each device can optionally be generated. Reports are saved as HTML files, static graphs as PNG images, and maps as HTML files.
@@ -106,7 +106,7 @@ Maps detailing locations of each device can optionally be generated. Reports are
 Each report, containing these files, is saved as a folder in the Outputs directory: `<your-directory>/Outputs/<Report Folder>`.
 
 ### Filtering
-  - `home --loc_filter` [details](/docs/Location%20Filtering.md)
+  - `home --loc_filter` [details](/docs/Location%20Filtering.md#location-filtering)
 
 Processed location data from **Records.json** is considered "bulk" data. These can be further "filtered" by accuracy, source, and device. 
 A report for bulk data may be useful in determining filter parameters. Reports can be generated from filtered location data, too.
@@ -116,7 +116,7 @@ Results of filter operations are saved as a new Parquet file in the **LocationDa
 `<your-directory>/LocationData/filtered.parquet`
 
 ### Maps
-  - `home --loc_map` [details](/docs/Mapping.md)
+  - `home --loc_map` [details](/docs/Mapping.md#location-mapping)
 
 Location data within an input time range can be used to generate an interactive HTML map with panning and zooming capabilities. Map markers can be styled by "time" or "accuracy". 
 Street tiles from [OpenStreetMap](https://www.openstreetmap.org/) are used in the Plotly graphs, so zooming in provides more detail.
@@ -124,7 +124,7 @@ Street tiles from [OpenStreetMap](https://www.openstreetmap.org/) are used in th
 Maps are saved in Outputs/Maps: `<your-directory>/Outputs/Maps/MAP-<style>_<date>.html`
 
 ### geoTag
-  - `home --geoTag` [details](/docs/geoTag.md)
+  - `home --geoTag` [details](/docs/geoTag.md#geotag)
 
 You made it! This was my main purpose in building this program. See a [previous version](https://github.com/NBPub/PhotosGeoTagger), and [inspiration](https://github.com/chuckleplant/blog/blob/master/scripts/location-geotag.py).
 
