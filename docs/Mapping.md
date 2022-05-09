@@ -4,7 +4,7 @@
 • [Location Reporting](/docs/Location%20Reporting.md)
 • [geoTag and geoStrip](/docs/geoTag.md)
 
-[Getting Started](/docs/Getting%20Started.md)
+[Getting Started](/docs#getting-started)
 
 
 # Location Mapping

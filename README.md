@@ -4,12 +4,12 @@ Utility for location history data from Google Takeout.
 
 ## Overview
 GoogleLocationUtility, ***GLU*** is a command-line interface (CLI) tool for processing and [utilizing](/README.md#Features) location history data from [Google Takeout](https://takeout.google.com/) built with Python. See below for [requirements](/README.md#Requirements) and [installation](/README.md#installation-quickstart) instructions. 
-A detailed usage guide is provided in the [documentation](/docs/Getting%20Started.md#getting-started).
+A detailed usage guide is provided in the [documentation](/docs#getting-started).
 
 
 ### Requirements
 **[Python](https://www.python.org/) version 3.8 or newer** is required. Installing within a virtual environment (**venv**) will install all required packages. 
-The requirements and versions specified during installation are listed below. An example output to `pip freeze > requirements.txt` is provided in the [documentation](/docs/Getting%20Started.md#installed-packages).
+The requirements and versions specified during installation are listed below. An example output to `pip freeze > requirements.txt` is provided in the [documentation](/docs#installed-packages).
 
 * **[Click](https://click.palletsprojects.com/) >= 8.0**, used to build CLI
 * **[exif](https://exif.readthedocs.io/) >= 1.3**, reads/adds GPS tags from/to image files
@@ -54,15 +54,15 @@ The requirements and versions specified during installation are listed below. An
     - Enter `home` or `home --help` to get started with **GLU**!
 
 		
-4. See [Getting Started](/docs/Getting%20Started.md#usage) for more detailed usage instructions.
+4. See [Getting Started](/docs#usage) for more detailed usage instructions.
     - Modify `<your-directory>/Configuration.ini` to setup various configuration settings.
 	    - Open configuration file for editing with `home --config`
     - Documentation can be accessed from **GLU** with `home --docs` or `home --docs_read`.
 
 
 ## Features
-For more information about the functions available, see their respective files in [documentation](/docs/Getting%20Started.md#getting-started). Configuration settings for the functions are detailed in [Configuration.ini Usage](/docs/Getting%20Started.md#configurationini).
-GLU functions stem from the command, `home`, which provides an overview of files and functions available. `home --help` will provide all the function [options](/docs/Getting%20Started.md#usage).
+For more information about the functions available, see their respective files in [documentation](/docs#getting-started). Configuration settings for the functions are detailed in [Configuration.ini Usage](/docs/Getting%20Started.md#configurationini).
+GLU functions stem from the command, `home`, which provides an overview of files and functions available. `home --help` will provide all the function [options](/docs#usage).
 
 ![Home1](/docs/images/home_ex1.png)
 

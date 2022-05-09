@@ -7,7 +7,7 @@
 • [geoStrip](/docs/geoTag.md#geoStrip)
 • [Location Mapping](/docs/Mapping.md)
 
-[Getting Started](/docs/Getting%20Started.md)
+[Getting Started](/docs#getting-started)
 
 
 # geoTag

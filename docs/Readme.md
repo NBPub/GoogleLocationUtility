@@ -2,7 +2,7 @@
 
 **Contents**
 
-[Installation](/docs/Getting%20Started.md#Installation) • [Usage](/docs/Getting%20Started.md#Usage) • [Configuration.ini - GLU settings](/docs/Getting%20Started.md#configurationini)
+[Installation](/docs#Installation) • [Usage](/docs#Usage) • [Configuration.ini - GLU settings](/docs#configurationini)
 
 **Function Pages**
 + [Location Processing](/docs/Location%20Processing.md#location-processing)
@@ -44,8 +44,8 @@ A guide to setting up [*Configuration.ini*](/Configuration.ini) , which resides 
 ## Configuration.ini
 
 **Contents**
-[LocationReport](/docs/Getting%20Started.md#LocationReport) • [Filter](/docs/Getting%20Started.md#Filter) • 
-[geoTag](/docs/Getting%20Started.md#geoTag) • [geoStrip](/docs/Getting%20Started.md#geoStrip) • [Map](/docs/Getting%20Started.md#Map)
+[LocationReport](/docs#LocationReport) • [Filter](/docs#Filter) • 
+[geoTag](/docs#geoTag) • [geoStrip](/docs#geoStrip) • [Map](/docs#Map)
 <br/><br/>
 
 `<your-directory>/Configuration.ini` contains specifications for various GLU operations, enter `home --config` to open in default editor. 
