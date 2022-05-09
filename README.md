@@ -1,5 +1,5 @@
 # Google Location Utility
-Utility for location history data from Google Takeout.
+Utility for **Location History** data from Google Takeout.
 
 
 ## Overview
@@ -79,7 +79,7 @@ Download [Configuration.ini](https://raw.githubusercontent.com/NBPub/GoogleLocat
 ```
 ---
 
-#### 3. Add **Location History** [Takeout](https://takeout.google.com/) export.
+#### 3. Add Location History [Takeout](https://takeout.google.com/) export.
 - Copy location data, *Records.json*, and optionally *Settings.json*, into `<your-directory>/LocationData`.
 - Other exported files are not used by **GLU**.
 - Enter `home` or `home --help` to get started with **GLU**!
