@@ -10,6 +10,11 @@
 
 [location_report.py](/src/GLU/location_report.py)
 
+**Contents**:
+[Invocation](#invocation) • [Requirements](#requirements) • 
+[Operations](#operations) • [Outputs](#outputs) • [Sample](#sample-report)
+
+
 ## Invocation
 
 `home --loc_report`
@@ -20,6 +25,16 @@
 
 1.  Processed location data in **LocationData** directory. 
     - Optional, *Settings.json* in **LocationData** directory
+
+#### Configuration.ini  \[LocationReport\]
+*If a setting specification is empty or cannot be read, the default will be used.*
+
+| Parameter | Accepted | Default | Description |
+| :----: | --- | --- | --- |
+| **accuracy_split** | Integer, > 0 | `565` | The proportion of data above/below value is reported, and lines are drawn at the value on graphs. |
+| **notable_timegaps** | Integer, 1-50 | `20` | Largest timegaps to add to a table in the report. |
+| **figure_dpi** | Integer, 100-300 | `100` | Resolution of generated [graphs](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html), dots per inch. |
+| **device_maps** | Boolean | `True` | Generate device maps from location data? |
 	
 ## Operations
 
