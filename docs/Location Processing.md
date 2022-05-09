@@ -11,7 +11,9 @@
 
 [location_parse.py](/src/GLU/location_parse.py)
 
-
+**Contents**:
+[Invocation](#invocation) • [Requirements](#requirements) • 
+[Operations](#operations) • [Outputs](#outputs) • [Data Descriptions](#location-history-data-descriptions)
 
 ## Invocation
 

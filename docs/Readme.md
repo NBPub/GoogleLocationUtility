@@ -44,7 +44,7 @@ A guide to setting up [*Configuration.ini*](/Configuration.ini) , which resides 
 ## Configuration.ini
 
 **Contents**
-[LocationReport](/docs#LocationReport) • [Filter](/docs#Filter) • 
+[LocationReport](/docs#LocationReport) • [LocationFilter](/docs#LocationFilter) • 
 [geoTag](/docs#geoTag) • [geoStrip](/docs#geoStrip) • [Map](/docs#Map)
 <br/><br/>
 
@@ -63,7 +63,7 @@ Location reporting will continue without any specification using default values.
   - Figure resolution (matplotlib graphs), in dots per inch. **100** to **300** accpted, defaults to **100**.
 		
 		
-### Filter
+### LocationFilter
 Location filtering may abort with invalid settings.
 
 * `accuracy_cutoff = <integer>`

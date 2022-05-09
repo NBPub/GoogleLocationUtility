@@ -11,6 +11,10 @@
 
 [location_filter.py](/src/GLU/location_filter.py)
 
+**Contents**:
+[Invocation](#invocation) • [Requirements](#requirements) • 
+[Operations](#operations) • [Outputs](#outputs) • [Overwrite Invocation](#overwrite-without-prompt)
+
 ## Invocation
 
 `home --loc_filter`
@@ -20,7 +24,17 @@
 ## Requirements
 
 1.  Processed location data in **LocationData** directory. Filtering is intended for "bulk" location data.
-	
+
+#### Configuration.ini  \[LocationFilter\]
+*If a setting specification cannot be read, the filtering operation will be aborted.*
+
+| Parameter | Accepted | Default | Description |
+| :----: | --- | --- | --- |
+| **accuracy_cutoff** | Integer, > 0 | *aborts without specification* | Location records with accuracy above cutoff value will be removed from the filtered data. |
+| **remove_sources** | Comma separated sources  | *None* | Sources to remove. Must match source names displayed in [report](/docs/Location%20Reporting.md#sample-report). |
+| **remove_devices** | Comma separated deviceTags | *None* | Devices to remove.  Must match deviceTags displayed in [report](/docs/Location%20Reporting.md#sample-report). |
+[more info](/docs#locationfilter)
+
 ## Operations
 
 1. Check for existing filtered data, prompt for overwrite.

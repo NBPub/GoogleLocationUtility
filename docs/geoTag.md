@@ -14,6 +14,10 @@
 
 [geotag.py](/src/GLU/geotag.py)
 
+**Contents**:
+[Invocation](#invocation) • [Requirements](#requirements-inputs) • [Operations](#operations) • 
+[Outputs](#outputs) • [CLI Walkthrough](#example) • [Sample Report and Map](#detailed-report-results-map)
+
 ## Invocation
 
 `home --geoTag`
@@ -25,6 +29,23 @@
 1.  Processed location data in **LocationData** directory
 2.  Input: Path of directory with photos to process. 
 	- Images must have EXIF date taken tag, `datetime_original`, and dates must be within range of the location data.
+
+#### Configuration.ini  \[geoTag\]
+*If a setting specification is empty or cannot be read, the default will be used. After input settings are read, they are presented to user to confirm before continuing with geoTag operation.*
+
+| Parameter | Accepted | Default | Description |
+| :----: | --- | --- | --- |
+| **subfolders** | Boolean | `True` | If sub-directories are present in specified folder, should their photos also be geoTagged? |
+| **overwrite** | Boolean | `False` | Should a location match be written over a photo's existing GPS data? |
+| **hemi** | 2-character string | *None* | Hemisphere to assume, in case existing photo tags lack reference. Should contain one of `N`,`S` and/or one of `E`,`W`. |
+| **location_data** | Filename of processed data (.parquet) | *prompt selection* | Source data to use for tagging. |
+| **timezone** | TZ-Name or `prompt` or `prompt-each`  | `prompt-each` | Prompt-each asks for a timezone for each folder of photos. Specifying a TZ-name or `prompt` will use one TZ for all folders. |
+| **flag_time** | Timedelta | `1 day` | Mark location matches greater than specified timedelta. |
+| **flag_accuracy** | Integer, >0 | *median of matching dataset* | Mark location matches greater than specified accuracy value. |
+| **detailed_report** | Boolean | `True` | Generate detailed report of geoTag operation? |
+| **results_map** | Boolean | `True` | Generate maps of photos' location matches? |
+| **open_mode** | `Locate`,`Launch`, or `Disable` | `Locate` | Options to interact with outputs at end of operation. |
+[more info](/docs#geotag)
 	
 ## Operations
 
@@ -113,17 +134,30 @@ An optional HTML detailed report can be generated with each geoTag operation. It
 
 [geostrip.py](/src/GLU/geostrip.py)
 
+**Contents**:
+[Invocation](#invocation-1) • [Requirements](#requirements-inputs-1) •
+[Operations](#operations-1) • [Outputs](#outputs-1)
+
 ## Invocation
 
 `home --geoStrip`
 
 `home -pgS`
 
-## Inputs
+## Requirements, Inputs
 
 1.  Input: Path of directory with photos to process. 
 	- Images must have EXIF date taken tag, `datetime_original`, and dates must be within range of the location data.
-	
+
+#### Configuration.ini  \[geoStrip\]
+*If a setting specification is empty or cannot be read, the default will be used.*
+
+| Parameter | Accepted | Default | Description |
+| :----: | --- | --- | --- |
+| **subfolders** | Boolean | `True` | If sub-directories are present in specified folder, should their photos also be geoStripped? |
+| **open_mode** | `Locate`,`Launch`, or `Disable` | `Locate` | Options to interact with outputs at end of operation. |
+[more info](/docs#geostrip)
+
 ## Operations
 
 1. **Validate Input Folder**, **Read Configuration.ini settings**

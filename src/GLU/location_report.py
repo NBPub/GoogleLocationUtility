@@ -88,7 +88,7 @@ def location_report(data, report_name):
 
     # Begin wrting Report, Settings Summary
     report = f'<p style="font-weight:bold;font-size:20px;">Report Settings:</p>\
-        <p><a href="{str(Path(Path.cwd(),"PGT.ini"))}">{str(Path(Path.cwd(),"PGT.ini"))}</a></p>\
+        <p><a href="{str(Path(Path.cwd(),"Configuration.ini"))}">{str(Path(Path.cwd(),"Configuration.ini"))}</a></p>\
         <div style="margin-left:5%;margin-right:50%;color:gold;background:MidnightBlue;padding:10px"> \
         <code>{read_settings}</code></div>'     
     del read_settings

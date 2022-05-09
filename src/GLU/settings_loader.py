@@ -151,30 +151,30 @@ def config_load(section):
         return read_settings, split, figure_dpi, timegaps, device_maps
         
     elif section == 'location_filter':
-        read_settings = [f'\t{key}={val}' for key,val in config['Filter'].items()]
+        read_settings = [f'\t{key}={val}' for key,val in config['LocationFilter'].items()]
         read_settings = '\n'.join(read_settings)
-        click.secho('[Filter]', fg = 'yellow', bg = 'blue')
+        click.secho('[LocationFilter]', fg = 'yellow', bg = 'blue')
         click.secho(read_settings, fg = 'yellow', bg = 'blue')
         click.echo('\n\n')
         # Accuracy Cutoff, must be integer
         try:
-            cutoff = abs(config.getint('Filter','accuracy_cutoff'))
+            cutoff = abs(config.getint('LocationFilter','accuracy_cutoff'))
         except Exception as e:
             click.secho(f'Error reading accuracy_cutoff:\n{str(e)}\n', fg = 'red')
             cutoff = 'abort'
         # Source(s) to remove, must be comma separated.
-        if 'remove_sources' in config['Filter'].keys() and config.get('Filter','remove_sources') != '':
+        if 'remove_sources' in config['LocationFilter'].keys() and config.get('LocationFilter','remove_sources') != '':
             try:
-                remove_sources = config.get('Filter','remove_sources').split(',')
+                remove_sources = config.get('LocationFilter','remove_sources').split(',')
             except Exception as e:
                 click.secho(f'Error reading remove_sources:\n{str(e)}\n', fg = 'red')
                 remove_sources = 'abort'
         else:
             remove_sources = None
         # Device(s) to remove, must be comma separated.
-        if 'remove_devices' in config['Filter'].keys() and config.get('Filter','remove_devices') != '':
+        if 'remove_devices' in config['LocationFilter'].keys() and config.get('LocationFilter','remove_devices') != '':
             try:
-                remove_devices =  config.get('Filter','remove_devices').split(',')
+                remove_devices =  config.get('LocationFilter','remove_devices').split(',')
             except Exception as e:
                 click.secho(f'Error reading remove_devices:\n{str(e)}', fg = 'red')
                 remove_devices = 'abort'

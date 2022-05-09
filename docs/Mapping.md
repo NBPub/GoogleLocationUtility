@@ -11,6 +11,10 @@
 
 [mapMe.py](/src/GLU/mapMe.py)
 
+**Contents**:
+[Invocation](#invocation) • [Requirements](#requirements) • 
+[Operations](#operations) • [Outputs](#outputs) • [Sample](#map-examples)
+
 ## Invocation
 
 `home --loc_map`
@@ -20,6 +24,19 @@
 ## Requirements
 
 1.  Processed location data in **LocationData** directory
+
+#### Configuration.ini  \[Map\]
+*If a setting specification is empty or cannot be read, the user will be prompted for an appropriate input*
+
+| Parameter | Accepted | Default | Description |
+| :----: | --- | --- | --- |
+| **location_data** | Filename of processed data (.parquet) | *prompt selection* | Source data to use for mapping. |
+| **style_by** | `time` or `frequency` | *prompt selection* | Method of styling map markers. See [below](#time) for more information, and the [examples](#map-examples). |
+| **begin** | Date *M/D/Y* | *prompt selection*  | Start date of data to be mapped. |
+| **endin** | Date *M/D/Y*| *prompt selection* | End data of data to be mapped. |
+| **timezone** | TZ Name | *prompt selection* | Location data is stored in [UTC](https://wikipedia.org/wiki/Coordinated_Universal_Time), option to convert before selecting data. |
+| **open_mode** | `Locate`,`Launch`, or `Disable` | `Locate` | Options to interact with outputs at end of operation. |
+[more info](/docs#map)
 	
 ## Operations
 
