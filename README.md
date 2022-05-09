@@ -1,11 +1,11 @@
 # Google Location Utility
-Utility for location history data from Google Takeout.
-
+Utility for **Location History** data from Google Takeout.
 
 ## Overview
 GoogleLocationUtility, ***GLU*** is a command-line interface (CLI) tool for processing and [utilizing](/README.md#Features) location history data from [Google Takeout](https://takeout.google.com/) built with Python. See below for [requirements](/README.md#Requirements) and [installation](/README.md#installation-quickstart) instructions. 
 A detailed usage guide is provided in the [documentation](/docs#getting-started).
 
+<img src="https://bestanimations.com/media/earth/998284110earth-spinning-rotating-animation-40.gif" height = 100px/><i>bestanimations.com</i>
 
 ### Requirements
 **[Python](https://www.python.org/) version 3.8 or newer** is required. Installing within a virtual environment (**venv**) will install all required packages. 
@@ -38,25 +38,32 @@ It is recommended to install GLU within a virtual environment (venv). It might b
 
 The following steps assume you are in `<your-directory>` and the virtual environment is activated.
 
+---
 #### Option 2A - [PyPi](https://pypi.org/project/GoogleLocationUtility/) installation
 
-**2A.** Install package from PyPi. Download [Configuration.ini](https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini) as `<your-directory>/Configuration.ini`, be sure not to change the file extension.
+**2A.** Install package from PyPi. 
 ```
 # Unix / macOS / Windows
 	pip install GoogleLocationUtility
 ```
-*Obtain Configuration.ini through command line. Use [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/)*
+Download [Configuration.ini](https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini) as `<your-directory>/Configuration.ini`, be sure not to change the file extension.
+
+*Obtain Configuration.ini through command line. Use [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/).*
 ```
 # Unix / macOS / Windows
 	curl https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -O ./Configuration.ini
 	# OR
 	wget https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -O ./Configuration.ini
 ```
+
+| | | | | |
+| :----: | --- | --- | --- | --- |
+
 #### Option 2B - Download and install from Github
 
 **2B.** Download and extract [GLU](https://github.com/NBPub/GoogleLocationUtility/archive/refs/heads/main.zip) into your directory `<your-directory>`. Install package.
-	- Click the green **Code** button at the top of the page for various download options.
-	- Note that the "docs" folder can be deleted
+- Click the green **Code** button at the top of the page for various download options.
+- Note that the "docs" folder can be deleted
 ```
 # Unix / macOS / Windows
 	pip install --editable .
@@ -70,8 +77,9 @@ The following steps assume you are in `<your-directory>` and the virtual environ
 	rmdir /s docs
 	del README.md
 ```
+---
 
-#### 3. Add **Location History** [Takeout](https://takeout.google.com/) export.
+#### 3. Add Location History [Takeout](https://takeout.google.com/) export.
 - Copy location data, *Records.json*, and optionally *Settings.json*, into `<your-directory>/LocationData`.
 - Other exported files are not used by **GLU**.
 - Enter `home` or `home --help` to get started with **GLU**!
