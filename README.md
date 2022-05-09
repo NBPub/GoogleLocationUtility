@@ -38,25 +38,32 @@ It is recommended to install GLU within a virtual environment (venv). It might b
 
 The following steps assume you are in `<your-directory>` and the virtual environment is activated.
 
+---
 #### Option 2A - [PyPi](https://pypi.org/project/GoogleLocationUtility/) installation
 
-**2A.** Install package from PyPi. Download [Configuration.ini](https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini) as `<your-directory>/Configuration.ini`, be sure not to change the file extension.
+**2A.** Install package from PyPi. 
 ```
 # Unix / macOS / Windows
 	pip install GoogleLocationUtility
 ```
-*Obtain Configuration.ini through command line. Use [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/)*
+Download [Configuration.ini](https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini) as `<your-directory>/Configuration.ini`, be sure not to change the file extension.
+
+*Obtain Configuration.ini through command line. Use [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/).*
 ```
 # Unix / macOS / Windows
 	curl https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -O ./Configuration.ini
 	# OR
 	wget https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -O ./Configuration.ini
 ```
+
+| | | | | |
+| :----: | --- | --- | --- | --- |
+
 #### Option 2B - Download and install from Github
 
 **2B.** Download and extract [GLU](https://github.com/NBPub/GoogleLocationUtility/archive/refs/heads/main.zip) into your directory `<your-directory>`. Install package.
-	- Click the green **Code** button at the top of the page for various download options.
-	- Note that the "docs" folder can be deleted
+- Click the green **Code** button at the top of the page for various download options.
+- Note that the "docs" folder can be deleted
 ```
 # Unix / macOS / Windows
 	pip install --editable .
@@ -70,6 +77,7 @@ The following steps assume you are in `<your-directory>` and the virtual environ
 	rmdir /s docs
 	del README.md
 ```
+---
 
 #### 3. Add **Location History** [Takeout](https://takeout.google.com/) export.
 - Copy location data, *Records.json*, and optionally *Settings.json*, into `<your-directory>/LocationData`.
