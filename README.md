@@ -22,42 +22,66 @@ The requirements and versions specified during installation are listed below. An
 * **[Jinja2](https://jinja.palletsprojects.com/) >= 3.0**, required for **pandas** HTML exports, report building
 
 ### Installation, Quickstart
+It is recommended to install GLU within a virtual environment (venv). It might be possible to run in your base environment.
 
-1. Download and extract [GLU](https://github.com/NBPub/GoogleLocationUtility/archive/refs/heads/main.zip) into a new directory `<your-directory>`. 
-	- Click the green **Code** button at the top of the page for various download options.
-	- The "docs" folder can be deleted
-		
-2. Create a virtual environment within the directory. Activate environment and install requirements. Note that "." should be included, and indicates the current directory.
+#### 1. In a directory of your creation, `<your-directory>`. Within this folder, create and activate a virtual environment in `venv`.
 ```
 # Unix / macOS
 	cd <your-directory>
 	python3 -m venv venv
-	. venv/bin/activate
-	pip install --editable .
-	# optional, delete docs
-	rm -r docs
-	rm README.md
-	
+	. venv/bin/activate	
 # Windows
 	cd <your-directory>
 	py -3 -m venv venv
 	venv\Scripts\activate
+```
+
+The following steps assume you are in `<your-directory>` and the virtual environment is activated.
+
+#### Option 2A - [PyPi](https://pypi.org/project/GoogleLocationUtility/) installation
+
+**2A.** Install package from PyPi. Download [Configuration.ini](https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini) as `<your-directory>/Configuration.ini`, be sure not to change the file extension.
+```
+# Unix / macOS / Windows
+	pip install GoogleLocationUtility
+```
+*Obtain Configuration.ini through command line. Use [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/)*
+```
+# Unix / macOS / Windows
+	curl https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -O ./Configuration.ini
+	# OR
+	wget https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -O ./Configuration.ini
+```
+#### Option 2B - Download and install from Github
+
+**2B.** Download and extract [GLU](https://github.com/NBPub/GoogleLocationUtility/archive/refs/heads/main.zip) into your directory `<your-directory>`. Install package.
+	- Click the green **Code** button at the top of the page for various download options.
+	- Note that the "docs" folder can be deleted
+```
+# Unix / macOS / Windows
 	pip install --editable .
-	# optional, delete docs
+```
+*Optional, delete docs folder*
+```
+# Unix / macOS / Windows
+	rm -r docs
+	rm README.md	
+# Windows
 	rmdir /s docs
 	del README.md
 ```
 
-3. Add location history [Takeout](https://takeout.google.com/) export.
-    - Copy location data, *Records.json*, and optionally *Settings.json*, into `<your-directory>/LocationData`.
-      - Other exported files are not used by **GLU**.
-    - Enter `home` or `home --help` to get started with **GLU**!
+#### 3. Add **Location History** [Takeout](https://takeout.google.com/) export.
+- Copy location data, *Records.json*, and optionally *Settings.json*, into `<your-directory>/LocationData`.
+- Other exported files are not used by **GLU**.
+- Enter `home` or `home --help` to get started with **GLU**!
 
 		
-4. See [Getting Started](/docs#usage) for more detailed usage instructions.
-    - Modify `<your-directory>/Configuration.ini` to setup various configuration settings.
-	    - Open configuration file for editing with `home --config`
-    - Documentation can be accessed from **GLU** with `home --docs` or `home --docs_read`.
+#### 4. See [Getting Started](/docs#usage) for detailed usage instructions.
+- Modify `<your-directory>/Configuration.ini` to specify various configuration settings.
+    - Open configuration file for editing with `home --config`
+- Documentation can be accessed from **GLU** with `home --docs` or `home --docs_read`.
+- Filestatus and available functions are listed with `home`, all available options are listed with `home --help`.
 
 
 ## Features
@@ -152,7 +176,7 @@ Please [report](https://github.com/NBPub/GoogleLocationUtility/issues) any error
 Ideas for improvement and future releases:
   * Allow graceful abort with `exit` input for Map settings.
   * Implement tests
-  * Publish on PyPi
+  * ~~Publish on PyPi~~
   * Utilize Jinja2 HTML templates to clean up code for reports (location report, geotag report)
   * Manual geoTag function, when location match is insufficient. Input coordinates or select on map to tag photo(s)
   * Advanced location report features 
