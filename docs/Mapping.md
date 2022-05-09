@@ -36,6 +36,7 @@
 | **endin** | Date *M/D/Y*| *prompt selection* | End data of data to be mapped. |
 | **timezone** | TZ Name | *prompt selection* | Location data is stored in [UTC](https://wikipedia.org/wiki/Coordinated_Universal_Time), option to convert before selecting data. |
 | **open_mode** | `Locate`,`Launch`, or `Disable` | `Locate` | Options to interact with outputs at end of operation. |
+
 [more info](/docs#map)
 	
 ## Operations

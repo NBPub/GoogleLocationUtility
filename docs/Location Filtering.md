@@ -33,6 +33,7 @@
 | **accuracy_cutoff** | Integer, > 0 | *aborts without specification* | Location records with accuracy above cutoff value will be removed from the filtered data. |
 | **remove_sources** | Comma separated sources  | *None* | Sources to remove. Must match source names displayed in [report](/docs/Location%20Reporting.md#sample-report). |
 | **remove_devices** | Comma separated deviceTags | *None* | Devices to remove.  Must match deviceTags displayed in [report](/docs/Location%20Reporting.md#sample-report). |
+
 [more info](/docs#locationfilter)
 
 ## Operations

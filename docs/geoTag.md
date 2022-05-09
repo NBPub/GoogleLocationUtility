@@ -45,6 +45,7 @@
 | **detailed_report** | Boolean | `True` | Generate detailed report of geoTag operation? |
 | **results_map** | Boolean | `True` | Generate maps of photos' location matches? |
 | **open_mode** | `Locate`,`Launch`, or `Disable` | `Locate` | Options to interact with outputs at end of operation. |
+
 [more info](/docs#geotag)
 	
 ## Operations
@@ -156,6 +157,7 @@ An optional HTML detailed report can be generated with each geoTag operation. It
 | :----: | --- | --- | --- |
 | **subfolders** | Boolean | `True` | If sub-directories are present in specified folder, should their photos also be geoStripped? |
 | **open_mode** | `Locate`,`Launch`, or `Disable` | `Locate` | Options to interact with outputs at end of operation. |
+
 [more info](/docs#geostrip)
 
 ## Operations

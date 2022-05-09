@@ -35,6 +35,7 @@
 | **notable_timegaps** | Integer, 1-50 | `20` | Largest timegaps to add to a table in the report. |
 | **figure_dpi** | Integer, 100-300 | `100` | Resolution of generated [graphs](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html), dots per inch. |
 | **device_maps** | Boolean | `True` | Generate device maps from location data? |
+
 [more info](/docs#locationreport)
 	
 ## Operations
