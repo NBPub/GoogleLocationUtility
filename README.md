@@ -11,7 +11,7 @@ A detailed usage guide is provided in the [documentation](/docs#getting-started)
 **[Python](https://www.python.org/) version 3.8 or newer** is required. See the [beginner's guide](https://wiki.python.org/moin/BeginnersGuide/Download) for help installing Python on your system.
 
 Installing **GLU** within a virtual environment (**venv**) will install all required packages. 
-The requirements and versions specified during installation are listed below. A list of all installed packages (output to `pip freeze > requirements.txt`) is provided docs: [installed packages](/docs#installed-packages).
+The requirements and versions specified during installation are listed below. A list of all installed packages (output to `pip freeze > requirements.txt`) is provided in the docs, [installed packages](/docs#installed-packages).
 
 * **[Click](https://click.palletsprojects.com/) >= 8.0**, used to build CLI
 * **[exif](https://exif.readthedocs.io/) >= 1.3**, reads/adds GPS tags from/to image files
