@@ -8,8 +8,10 @@ A detailed usage guide is provided in the [documentation](/docs#getting-started)
 <img src="https://bestanimations.com/media/earth/998284110earth-spinning-rotating-animation-40.gif" height = 100px/><i>bestanimations.com</i>
 
 ### Requirements
-**[Python](https://www.python.org/) version 3.8 or newer** is required. Installing within a virtual environment (**venv**) will install all required packages. 
-The requirements and versions specified during installation are listed below. An example output to `pip freeze > requirements.txt` is provided in the [documentation](/docs#installed-packages).
+**[Python](https://www.python.org/) version 3.8 or newer** is required. See the [beginner's guide](https://wiki.python.org/moin/BeginnersGuide/Download) for help installing Python on your system.
+
+Installing **GLU** within a virtual environment (**venv**) will install all required packages. 
+The requirements and versions specified during installation are listed below. A list of all installed packages (output to `pip freeze > requirements.txt`) is provided docs: [installed packages](/docs#installed-packages).
 
 * **[Click](https://click.palletsprojects.com/) >= 8.0**, used to build CLI
 * **[exif](https://exif.readthedocs.io/) >= 1.3**, reads/adds GPS tags from/to image files
@@ -22,7 +24,7 @@ The requirements and versions specified during installation are listed below. An
 * **[Jinja2](https://jinja.palletsprojects.com/) >= 3.0**, required for **pandas** HTML exports, report building
 
 ### Installation, Quickstart
-It is recommended to install GLU within a virtual environment (venv). It might be possible to run in your base environment.
+The following steps provide installation instructions within a virtual environment. It may be possible to install and use **GLU** in your base environment, but it is not recommended.
 
 #### 1. In a directory of your creation, `<your-directory>`. Within this folder, create and activate a virtual environment in `venv`.
 ```
@@ -36,7 +38,7 @@ It is recommended to install GLU within a virtual environment (venv). It might b
 	venv\Scripts\activate
 ```
 
-The following steps assume you are in `<your-directory>` and the virtual environment is activated.
+The following steps assume you are in `<your-directory>` and the virtual environment is activated. These are accomplished in the first, `cd ...`, and third, `...activate`, lines.
 
 ---
 #### Option 2A - [PyPi](https://pypi.org/project/GoogleLocationUtility/) installation
@@ -46,7 +48,7 @@ The following steps assume you are in `<your-directory>` and the virtual environ
 # Unix / macOS / Windows
 	pip install GoogleLocationUtility
 ```
-Download [Configuration.ini](https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini) as `<your-directory>/Configuration.ini`, be sure not to change the file extension.
+  * Download [Configuration.ini](https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini) as `<your-directory>/Configuration.ini`, be sure not to change the file extension.
 
 *Obtain Configuration.ini through command line. Use [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/).*
 ```

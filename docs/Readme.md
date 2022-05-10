@@ -153,7 +153,7 @@ Location mapping will continue without any specification using default values an
 
 ## Installed Packages
 
-*Example from my venv, 05 May 2022*
+*Example from my venv, 05 May 2022, Python version 3.8.12*
 ```
 click==8.1.3
 colorama==0.4.4
