@@ -154,6 +154,7 @@ Location mapping will continue without any specification using default values an
 ## Installed Packages
 
 *Example from my venv, 05 May 2022, Python version 3.8.12*
+
 ```
 click==8.1.3
 colorama==0.4.4
@@ -163,6 +164,7 @@ exif==1.3.5
 fastparquet==0.8.1
 fonttools==4.33.3
 fsspec==2022.3.0
+GoogleLocationUtility==0.1.0
 Jinja2==3.1.2
 kiwisolver==1.4.2
 MarkupSafe==2.1.1
@@ -180,7 +182,4 @@ scipy==1.8.0
 seaborn==0.11.2
 six==1.16.0
 tenacity==8.0.1
-
-# Editable install with no version control (GoogleLocationUtility==0.1.0)
-# -e <your-directory>/src
 ```
