@@ -12,7 +12,7 @@ import pandas as pd
 
 def source_folder(operation):
     source = None    
-    while source == None:
+    while source == None or source.replace(' ','') == '':
         try:
             source = input(f'Choose folder to {operation}: ')
             if source == 'exit':
@@ -294,8 +294,8 @@ def config_load(section):
             click.secho(f'Using {location_data_path.name} for map creation.',fg = 'yellow')  
             click.secho(click.format_filename(location_data_path),fg = 'blue')
         else:
-            click.secho("Aborted!", fg = "yellow")
-            exit    
+            location_data_path = 'exit'
+            return location_data_path, None, None, None, None, None
         
         # timezone
         timezone = config.get('Map','timezone')
@@ -303,72 +303,98 @@ def config_load(section):
             try: 
                 pd.to_datetime(time()*1E9, utc = True).tz_convert(timezone) # test conversion of dummy time, keep if successful
                 click.secho(f'\nTimezone set to {timezone}',fg = 'green')
+                check = True
             except Exception as e:        
                 click.secho(f'Error reading specified timezone: {timezone}',fg = 'yellow')
                 click.secho(str(e),fg = 'red')
-                timezone = ''        
-        while timezone == '':
+                check = False     
+        else:
+            check = False
+        while check == False:
             timezone =  input('\nSpecify timezone: ')
             try:
-                # if timezone == 'exit':
-                    # click.secho("Aborted!", fg = "yellow")
-                    # exit
+                if timezone == 'exit':
+                    check = True
+                    return location_data_path, timezone, None, None, None, None
                 pd.to_datetime(time()*1E9, utc = True).tz_convert(timezone)
                 click.secho(f'\nTimezone set to {timezone}',fg = 'green')
+                check = True
             except Exception as e:
                 click.secho(f'\nError reading specified timezone: {timezone}',fg = 'yellow')
                 click.secho(str(e),fg = 'red')  
-                timezone = '' 
-        try: # begin
-            begin = config.get('Map','begin').lower()
-            begin = pd.Timestamp(begin, tz = timezone).floor('d')
-            click.secho(f'\nBegin set to {begin}', fg = 'green')
-        except:
-            click.secho('\n"begin" date not specified or invalid', fg = 'red')
-            begin = ''        
-        while begin == '':
-            try:
-                begin = pd.Timestamp(input('\nEnter start date: '), tz = timezone).floor('d')
-                # if begin == 'exit':
-                    # click.secho("Aborted!", fg = "yellow")
-                    # exit
-                click.secho(f'Begin set to {begin}', fg = 'green')
-            except Exception as e:
-                click.secho(f'Invalid selection: {str(e)}\n', fg = 'red')
-                begin = ''
-        try: # endin
-            endin = config.get('Map','endin').lower()
-            endin = pd.Timestamp(endin, tz = timezone).ceil('d')
-            click.secho(f'Endin set to {endin}', fg = 'green')
-        except:
-            click.secho('\n"endin" date not specified or invalid', fg = 'red')
-            endin = ''        
-        while endin == '':
-            try:
-                endin = pd.Timestamp(input('\nEnter end date: '), tz = timezone).ceil('d')
-                # if endin == 'exit':
-                    # click.secho("Aborted!", fg = "yellow")
-                    # exit
-                click.secho(f'Endin set to {endin}', fg = 'green')
-            except Exception as e:
-                click.secho(f'Invalid selection: {str(e)}\n', fg = 'red')
-                endin = ''    
+                check = False
+        
+        # begin
+        begin = config.get('Map','begin').lower()
+        if begin != '':
+            try: # begin
+                begin = pd.Timestamp(begin, tz = timezone).floor('d')
+                click.secho(f'\nBegin set to {begin}', fg = 'green')
+                check = True
+            except:
+                click.secho('\n"begin" date not specified or invalid', fg = 'red')
+                check = False
+        else:
+            check = False
+        while check == False:
+            begin = input('\nEnter start date: ')
+            if begin == 'exit':
+                check = True
+                return location_data_path, timezone, begin, None, None, None
+            elif begin == '':
+                check = False
+            else:
+                try:
+                    begin = pd.Timestamp(begin, tz = timezone).floor('d')
+                    click.secho(f'Begin set to {begin}', fg = 'green')
+                    check = True
+                except Exception as e:
+                    click.secho(f'Invalid selection: {str(e)}\n', fg = 'red')
+                    check = False 
+        
+        # endin
+        endin = config.get('Map','endin').lower() 
+        if endin != '':
+            try: 
+                endin = pd.Timestamp(endin, tz = timezone).floor('d')
+                click.secho(f'\nEndin set to {endin}', fg = 'green')
+                check = True
+            except:
+                click.secho('\n"endin" date not specified or invalid', fg = 'red')
+                check = False
+        else:
+            check = False     
+        while check == False:
+            endin = input('\nEnter end date: ')
+            if endin == 'exit':
+                check = True
+                return location_data_path, timezone, begin, endin, None, None
+            elif ending == '':
+                check = False
+            else:
+                try:
+                    endin = pd.Timestamp(endin, tz = timezone).ceil('d')
+                    click.secho(f'Endin set to {endin}', fg = 'green')
+                    check = True
+                except Exception as e:
+                    click.secho(f'Invalid selection: {str(e)}\n', fg = 'red')
+                    check = False
+                
         try: # open_mode at end of operation
             open_mode = config.get('Map','open_mode').lower()
             open_mode = 'locate' if open_mode not in ['launch','locate','disable'] else open_mode
         except:
             open_mode = 'locate'
+        
         # Map Type
         style_by = config.get('Map','style_by').lower()
-        while style_by not in ['time','frequency']:
+        while style_by not in ['time','frequency', 'exit']:
             click.secho(f'\nInvalid or not specified "style_by" setting, {style_by}', fg = 'red')
             click.secho('Valid options:',fg = 'yellow')
             click.secho('\ttime\n\tfrequency',fg = 'cyan')
             choice = input('Choose option: ').lower()
-            # if choice == 'exit':
-                # click.secho("Aborted!", fg = "yellow")
-                # exit
             style_by = choice
-    
-        click.secho(f'\nMapping against {style_by}.', fg = 'green')   
-        return timezone, location_data_path, begin, endin, open_mode, style_by
+        
+        if style_by != 'exit':
+            click.secho(f'\nMapping against {style_by}.', fg = 'green')   
+        return location_data_path, timezone, begin, endin, open_mode, style_by

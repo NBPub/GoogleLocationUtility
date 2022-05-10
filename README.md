@@ -182,7 +182,8 @@ Please [report](https://github.com/NBPub/GoogleLocationUtility/issues) any error
 
 ## Future
 Ideas for improvement and future releases:
-  * Allow graceful abort with `exit` input for Map settings.
+  * ~~Allow graceful abort with `exit` input for Map settings.~~
+	* For settings loads from Configuration.ini, capture Key error for missing specifications. Provide link to Configuration.ini base as error/exit message.
   * Implement tests
   * ~~Publish on PyPi~~
   * Utilize Jinja2 HTML templates to clean up code for reports (location report, geotag report)

@@ -207,7 +207,7 @@ def freqmap(sourcedata, maptitle):
     del max_bound, sourcedata
     # Create Map, return figure
     fig = px.scatter_mapbox(gather, lat = 'Lat', lon = 'Lon', size = 'Frequency', title = maptitle,
-                    color = 'Frequency', opacity = gather.Frequency/gather.Frequency.max(), zoom=zoom,
+                    color = 'Frequency', opacity = np.sqrt(gather.Frequency/gather.Frequency.max()), zoom=zoom,
                     color_continuous_scale=["DeepSkyBlue", "BlueViolet", "DarkMagenta"],
                     hover_data={'Frequency':':.2f'})
     
@@ -224,7 +224,12 @@ def freqmap(sourcedata, maptitle):
 # Location Map function, chop data to specified date-range, then send to appropriate map style
 def mapMe():
     # Read settings
-    timezone, location_data_path, begin, endin, open_mode, style_by = config_load('mapMe')
+    location_data_path, timezone, begin, endin, open_mode, style_by = config_load('mapMe')
+    if 'exit' in [location_data_path, timezone, begin, endin, open_mode, style_by]:
+        return "Aborted!", "yellow"
+    elif None in [location_data_path, timezone, begin, endin, open_mode, style_by]:
+        return "Aborted!", "yellow"    
+    
     # Load Data
     start = time()
     click.secho('\nLoading data file. Chopping to selected time bounds . . .', fg = 'yellow')    
