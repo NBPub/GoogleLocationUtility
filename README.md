@@ -50,7 +50,7 @@ The following steps assume you are in `<your-directory>` and the virtual environ
 ```
   * Download [Configuration.ini](https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini) as `<your-directory>/Configuration.ini`, be sure not to change the file extension.
 
-*Obtain Configuration.ini through command line. Use [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/). Note capitilization of "o/O" for curl/wget
+*Obtain Configuration.ini through command line. Use [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/). Note capitilization of "o/O" for curl/wget*
 ```
 # Unix / macOS / Windows
 	curl https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -o ./Configuration.ini
