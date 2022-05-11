@@ -2,7 +2,7 @@
 
 **Contents**
 
-[Installation](/docs#Installation) • [Usage](/docs#Usage) • [Configuration.ini - GLU settings](/docs#configurationini)
+[Installation](/docs#Installation) • [Detailed Requirements](/docs#installed-packages) • [Usage](/docs#Usage) • [Configuration.ini - GLU settings](/docs#configurationini)
 
 **Function Pages**
 + [Location Processing](/docs/Location%20Processing.md#location-processing)
@@ -87,7 +87,7 @@ See [boolean](https://docs.python.org/3/library/configparser.html#configparser.C
 ---
 
 ### geoTag
-[function page](/docs/geoTag.md#geoTag) | *geoTag will continue without any specification using default values and will prompt for necessary inputs.(
+[function page](/docs/geoTag.md#geoTag) | *geoTag will continue without any specification using default values and will prompt for necessary inputs.*
 
 * `subfolders = <Boolean>`
   - If sub-directories are present in specified folder, should their photos also be geoTagged? Defaults to **True**
