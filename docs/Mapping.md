@@ -33,7 +33,7 @@
 | **location_data** | Filename of processed data (.parquet) | *prompt selection* | Source data to use for mapping. |
 | **style_by** | `time` or `frequency` | *prompt selection* | Method of styling map markers. See [below](#time) for more information, and the [examples](#map-examples). |
 | **begin** | Date *M/D/Y* | *prompt selection*  | Start date of data to be mapped. |
-| **endin** | Date *M/D/Y*| *prompt selection* | End data of data to be mapped. |
+| **endin** | Date *M/D/Y*| *prompt selection* | End date of data to be mapped. |
 | **timezone** | TZ Name | *prompt selection* | Location data is stored in [UTC](https://wikipedia.org/wiki/Coordinated_Universal_Time), option to convert before selecting data. |
 | **open_mode** | `Locate`,`Launch`, or `Disable` | `Locate` | Options to interact with outputs at end of operation. |
 

@@ -5,7 +5,7 @@ Utility for **Location History** data from Google Takeout.
 GoogleLocationUtility, ***GLU*** is a command-line interface (CLI) tool for processing and [utilizing](/README.md#Features) location history data from [Google Takeout](https://takeout.google.com/) built with Python. See below for [requirements](/README.md#Requirements) and [installation](/README.md#installation-quickstart) instructions. 
 A detailed usage guide is provided in the [documentation](/docs#getting-started).
 
-<img src="https://bestanimations.com/media/earth/998284110earth-spinning-rotating-animation-40.gif" height = 100px alt="bestanimations.com">
+<img src="https://bestanimations.com/media/earth/998284110earth-spinning-rotating-animation-40.gif" height = 100px title="bestanimations.com">
 
 ### Requirements
 **[Python](https://www.python.org/) version 3.8 or newer** is required. See the [beginner's guide](https://wiki.python.org/moin/BeginnersGuide/Download) for help installing Python on your system.

@@ -51,13 +51,14 @@ Some functions may ask for user inputs. Inputs come in two flavors:
 `<your-directory>/Configuration.ini` contains specifications for various GLU operations, enter `home --config` to open in default editor. 
 
 The sections of the file are listed and detailed below. Examples of input types are specified within `= <type>`, and defaults or working examples **in bold**.
-For example `<integer>` indicates that the setting should be a number, with suggested values of **5** or **333**.
+
+For example `<integer>` indicates that the setting should be a number, and suggested values might be **5** or **333**.
 See [boolean](https://docs.python.org/3/library/configparser.html#configparser.ConfigParser.getboolean) for more information on acceptable values.
 
-### LocationReport
-[function page](/docs/Location%20Reporting.md#location-reporting)
+---
 
-Location reporting will continue without any specification using default values.
+### LocationReport
+[function page](/docs/Location%20Reporting.md#location-reporting) | *Location reporting will continue without any specification using default values.*
 
 * `accuracy_split = <integer>`
   - Accuracy radius (m) value to highlight. Should be > 0, defaults to **565** ~ 1 sq km.
@@ -68,11 +69,10 @@ Location reporting will continue without any specification using default values.
 * `device_maps = <Boolean>`
   - Option to generate [frequency] maps for each device in location data. Maps are saved as separate HTML files and linked in the report.
 		
-		
-### LocationFilter
-[function page](/docs/Location%20Filtering.md#location-filtering)
+---
 
-Location filtering may abort with invalid settings.
+### LocationFilter
+[function page](/docs/Location%20Filtering.md#location-filtering) | *Location filtering may abort with invalid settings.*
 
 * `accuracy_cutoff = <integer>`
   - Remove entries with accuracy value above, worse than, \<integer\>m radius. Should be > 0.
@@ -84,10 +84,10 @@ Location filtering may abort with invalid settings.
   - Specify devices to remove, comma separate multiple sources (spaces are ignored). Possible deviceTags can be found in a report. Default is None.
   - *Filter operation aborts if there is an error reading sources.*
 		
-### geoTag
-[function page](/docs/geoTag.md#geoTag)
+---
 
-geoTag will continue without any specification using default values and will prompt for necessary inputs.
+### geoTag
+[function page](/docs/geoTag.md#geoTag) | *geoTag will continue without any specification using default values and will prompt for necessary inputs.(
 
 * `subfolders = <Boolean>`
   - If sub-directories are present in specified folder, should their photos also be geoTagged? Defaults to **True**
@@ -127,11 +127,10 @@ geoTag will continue without any specification using default values and will pro
     - **locate** - ask to open report directory
     - **disable** - no questions
 		
+---
 		
 ### geoStrip
-[function page](/docs/geoTag.md#geoStrip)
-
-geoStrip will continue without any specification using default values.
+[function page](/docs/geoTag.md#geoStrip) | *geoStrip will continue without any specification using default values.*
 
 * `subfolders = <Boolean>`
 	- If sub-directories are present in specified folder, should their photos also be geoStripped? Defaults to **True**			
@@ -140,11 +139,10 @@ geoStrip will continue without any specification using default values.
 		- **launch** - ask to open report in appropriate program
 		- **locate** - ask to open report directory
 		- **disable** - no questions		
+---
 		
 ### Map
-[function page](/docs/Mapping.md#location-mapping)
-
-Location mapping will continue without any specification using default values and will prompt for necessary inputs.
+[function page](/docs/Mapping.md#location-mapping) | *Location mapping will continue without any specification using default values and will prompt for necessary inputs.*
 
 * `location_data = <filename>`
 	- Specify processed location data to use. If None or not found, will prompt selection of available files in LocationData directory. 
@@ -164,6 +162,8 @@ Location mapping will continue without any specification using default values an
 		- **launch** - ask to open report in appropriate program
 		- **locate** - ask to open report directory
 		- **disable** - no questions	
+
+---
 
 ## Installed Packages
 
