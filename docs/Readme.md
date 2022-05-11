@@ -31,10 +31,11 @@ Enter `home --help` to list all available options and their descriptions. Refer 
 Some functions may ask for user inputs. Inputs come in two flavors:
 
 1. **y/n** - takes the next keystroke as answer, anything other than "y" is interpreted as "n"
-2. **General Input** - requires user to specify a parameter within an operation, such as a setting or save location
-		- Users are prompted to retry, if entered input is invalid
-		- Entering `exit` will abort the operation in most cases. Otherwise try *Ctrl+C* or *Cmd+C* to exit.
-		- Many inputs can be set ahead of time and avoided by modifying [*Configuration.ini*](/Configuration.ini), see [below](/docs#configurationini) for details.
+2. **General Input** 
+	- requires user to specify a parameter within an operation, such as a setting or save location
+	- Users are prompted to retry, if entered input is invalid
+	- Entering `exit` will abort the operation in most cases. Otherwise try *Ctrl+C* or *Cmd+C* to exit.
+	- Many inputs can be set ahead of time and avoided by modifying [*Configuration.ini*](/Configuration.ini), see [below](/docs#configurationini) for details.
 
 ![abort](/docs/images/abort_ex.png "abort operation with 'exit'")
 
