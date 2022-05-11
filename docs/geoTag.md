@@ -77,14 +77,14 @@
 	- *optional* interactive map(s) displaying tagged image locations as HTML file(s)
 
 *Example "results-summary.csv"*
-![geoTag](/docs/images/geoTag_table.png)
+![geoTag](/docs/images/geoTag_table.png "Basic results table, organized by folder")
 
 ## Example
 
 <details>
   <summary>geoTag CLI Walkthrough</summary>
   
-  ![geoTag](/docs/images/geoTag_tall.png)
+  ![geoTag](/docs/images/geoTag_tall.png "CLI walkthrough for geoTag. Note timezone specification is 'prompt-each'")
 </details>
 
 ## Detailed Report, Results Map
@@ -96,17 +96,17 @@ An optional HTML detailed report can be generated with each geoTag operation. It
 
 **Summary table in detailed report**
 
-![report0](/docs/images/geoTag_report_0.png)
+![report0](/docs/images/geoTag_report_0.png "Basic results table, stylized in detailed report")
 
 **Folder Summary**
 
-![report1](/docs/images/geoTag_report_1.png)
+![report1](/docs/images/geoTag_report_1.png "Detailed results, file-by-file summary for each folder")
 
 *Images with existing tags have a Map Link to directions*
   - **from:** existing tag 
   - **to:** location match
 
-![report2](/docs/images/geoTag_report_2.png)
+![report2](/docs/images/geoTag_report_2.png "Detailed results, flagged timedelta and accuracy")
 
 *Images without existing GPS info simply have a link to the matched location*
 
@@ -118,11 +118,11 @@ An optional HTML detailed report can be generated with each geoTag operation. It
 	
 **Results Map**
 
-![report3](/docs/images/geoTag_report_3.png)
+![report3](/docs/images/geoTag_report_3.png "Results map showing tagged photos with existing GPS data")
 
 *Markers are placed at the location matches, lines are drawn from the previously tagged location, if applicable.*
 
-![report4](/docs/images/geoTag_report_4.png)
+![report4](/docs/images/geoTag_report_4.png "Results map, hovering provides additional data")
 
 *Image marker/line visibility can be toggled in the legend. Relevant information is provided when hovering on markers (location matches) or line origins (existing tags).*
 
@@ -184,4 +184,4 @@ An optional HTML detailed report can be generated with each geoTag operation. It
 
 *Example "GeoStrip_results.csv"*
 
-![geoStrip](/docs/images/geoStrip_table.png)
+![geoStrip](/docs/images/geoStrip_table.png "Basic results table")

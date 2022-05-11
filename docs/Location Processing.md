@@ -58,7 +58,7 @@
 <details>
   <summary>loc_parse example</summary>
   
-![Parse1](/docs/images/location_parse.png)
+![Parse1](/docs/images/location_parse.png "CLI example")
 
 *Parsing operation for ~500MB Records.json file*
 </details>

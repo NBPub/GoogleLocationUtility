@@ -36,6 +36,13 @@ def DMS(x, coordinate):
     return (Deg, Min, Sec), DMS_ref
 
 def geotag():
+    # Settings Read, confirm continue
+    subfolders, overwrite, hemi, location_data_path, timezone, flag_accuracy, flag_time, detailed_report, open_mode, photomap, = config_load('geoTag')
+    click.secho('\n\nContinue with GeoTag operation? (y/n):\n', fg = 'cyan', nl = False)
+    to_open = click.getchar()
+    if to_open.lower() != 'y': 
+        return '\nAborted', 'yellow'
+    
     # Choose Folder
     source = source_folder('geoTag')
     if source == 'exit':
@@ -43,13 +50,6 @@ def geotag():
     else:
         click.secho(click.format_filename(source),fg='blue')
         click.secho('geoTag folder set\n\n',fg='green')
-
-    # Settings Read, confirm continue
-    subfolders, overwrite, hemi, location_data_path, timezone, flag_accuracy, flag_time, detailed_report, open_mode, photomap, = config_load('geoTag')
-    click.secho('\n\nContinue with GeoTag operation? (y/n):', fg = 'cyan', nl = False)
-    to_open = click.getchar()
-    if to_open.lower() != 'y': 
-        return '\nAborted', 'yellow'
         
     # Get subdirectories, if any
     if subfolders:
@@ -349,6 +349,9 @@ def geotag():
     if detailed_report:
         geotag_report(savefolder, maplinks, results.copy(), available, flag_accuracy, flag_time, \
                           error_report, skiptime, skipGPS, timezones, overwrite)
+        report_path = Path(savefolder, 'results-detailed.html')
+    else:
+        report_path = Path(savefolder, 'results-summary.csv')
 
     # Offer to open / locate the results
     if open_mode == 'locate':
@@ -359,10 +362,10 @@ def geotag():
             click.launch(click.format_filename(Path(savefolder, 'results-detailed.html')), locate = True)
     
     elif open_mode == 'launch':
-        click.secho(click.format_filename(Path(savefolder, 'results-detailed.html')),fg='blue')
+        click.secho(click.format_filename(report_path),fg='blue')
         click.secho('\tOpen results report? (y/n):', fg = 'cyan', nl = False)
         to_open = click.getchar()
         if to_open.lower() == 'y': 
-            click.launch(click.format_filename(Path(savefolder, 'results-detailed.html')))    
+            click.launch(click.format_filename(report_path))    
     
     return '\n\nConcluded GeoTag trial!', 'green'

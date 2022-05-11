@@ -12,6 +12,12 @@ import click
 from .settings_loader import config_load
 
 def location_filter(data, overwrite):
+    # load and read Filter settings, confirm continue
+    click.secho('\n\nReading Filter Settings. . .\n', fg = 'yellow')  
+    cutoff, remove_sources, remove_devices = config_load('location_filter')
+    if 'abort' in [cutoff, remove_sources, remove_devices]:
+       return 'Filter operation aborted, check settings in Configuration.ini "home --config"', 'magenta'
+    
     # Choose location data, skip if data in memory
     if data is None:
         from .settings_loader import loc_loader
@@ -20,7 +26,12 @@ def location_filter(data, overwrite):
             return "Filter operation aborted", 'yellow'
     elif overwrite and overwrite != 'OW':
         parse_path = overwrite
-
+       
+    click.secho('\nContinue with location filter operation? (y/n):', fg = 'cyan', nl = False)
+    to_open = click.getchar()
+    if to_open.lower() != 'y':
+        return "Aborted!", "yellow"
+    
     # Overwrite check
     if Path(Path.cwd(), 'LocationData', 'filtered.parquet').exists() and overwrite != 'OW':
         click.secho('\nThe following operation will replace existing "filtered.parquet", when complete.\n Continue (y/n)?', fg = 'cyan', nl = False)
@@ -30,17 +41,6 @@ def location_filter(data, overwrite):
     elif Path(Path.cwd(), 'LocationData', 'filtered.parquet').exists() and overwrite == 'OW': # Overwrite specified in call
         click.secho('\nSaving over existing "filtered.parquet" . . .', fg = 'yellow')
         pass
-
-    click.secho('\n\nReading Filter Settings. . .\n', fg = 'yellow')  
-    # load and read Filter settings, confirm continue
-    cutoff, remove_sources, remove_devices = config_load('location_filter')
-    if 'abort' in [cutoff, remove_sources, remove_devices]:
-       return 'Filter operation aborted', 'magenta'
-       
-    click.secho('\nContinue with location filter operation? (y/n):', fg = 'cyan', nl = False)
-    to_open = click.getchar()
-    if to_open.lower() != 'y':
-        return "Aborted!", "yellow"
     
     # Begin Filtering operation
     start = time()

@@ -55,10 +55,10 @@ def welcome(selection):
     
     # Docs, ReadDocs
     if selection == 'docs':
-        click.secho('https://github.com/NBPub/GoogleLocationUtility/tree/main/docs', fg='blue')    
+        click.secho('https://github.com/NBPub/GoogleLocationUtility/blob/main/docs#getting-started', fg='blue')    
     elif selection == 'docs_read':
-        click.secho('https://github.com/NBPub/GoogleLocationUtility/tree/main/docs', fg='blue')
-        click.launch('https://github.com/NBPub/GoogleLocationUtility/tree/main/docs#getting-started')
+        click.secho('Opening https://github.com/NBPub/GoogleLocationUtility/blob/main/docs#getting-started', fg='blue')
+        click.launch('https://github.com/NBPub/GoogleLocationUtility/blob/main/docs#getting-started')
     
     # Location Parse
     elif selection == 'loc_parse':
@@ -81,6 +81,9 @@ def welcome(selection):
             click.launch(click.format_filename(file))
         else:
             click.secho('Configuration file, Configuration.ini, not found!\nSome GLU features may be unavailable, and others will fall to defaults.',fg='red')
+            click.secho('\tDownload via CLI with "curl" or "wget" and retry opening:', fg='cyan')
+            click.secho('curl https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -o ./Configuration.ini', fg='cyan', bg='magenta')
+            click.secho('wget https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -O ./Configuration.ini', fg='cyan', bg='magenta')
     
     # Location Filter, Location Filter OW
     elif selection == 'loc_filter':

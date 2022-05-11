@@ -5,7 +5,7 @@ Utility for **Location History** data from Google Takeout.
 GoogleLocationUtility, ***GLU*** is a command-line interface (CLI) tool for processing and [utilizing](/README.md#Features) location history data from [Google Takeout](https://takeout.google.com/) built with Python. See below for [requirements](/README.md#Requirements) and [installation](/README.md#installation-quickstart) instructions. 
 A detailed usage guide is provided in the [documentation](/docs#getting-started).
 
-<img src="https://bestanimations.com/media/earth/998284110earth-spinning-rotating-animation-40.gif" height = 100px/><i>bestanimations.com</i>
+<img src="https://bestanimations.com/media/earth/998284110earth-spinning-rotating-animation-40.gif" height = 100px alt="bestanimations.com">
 
 ### Requirements
 **[Python](https://www.python.org/) version 3.8 or newer** is required. See the [beginner's guide](https://wiki.python.org/moin/BeginnersGuide/Download) for help installing Python on your system.
@@ -50,10 +50,10 @@ The following steps assume you are in `<your-directory>` and the virtual environ
 ```
   * Download [Configuration.ini](https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini) as `<your-directory>/Configuration.ini`, be sure not to change the file extension.
 
-*Obtain Configuration.ini through command line. Use [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/).*
+*Obtain Configuration.ini through command line. Use [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/). Note capitilization of "o/O" for curl/wget
 ```
 # Unix / macOS / Windows
-	curl https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -O ./Configuration.ini
+	curl https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -o ./Configuration.ini
 	# OR
 	wget https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -O ./Configuration.ini
 ```
@@ -98,7 +98,7 @@ The following steps assume you are in `<your-directory>` and the virtual environ
 For more information about the functions available, see their respective files in [documentation](/docs#getting-started). Configuration settings for the functions are detailed in [Configuration.ini Usage](/docs/Getting%20Started.md#configurationini).
 GLU functions stem from the command, `home`, which provides an overview of files and functions available. `home --help` will provide all the function [options](/docs#usage).
 
-![Home1](/docs/images/home_ex1.png)
+![Home1](/docs/images/home_ex1.png "'home' with Configuration.ini, but no Location History data")
 
 *"home" printout before location history added to project folder.*
 
@@ -110,7 +110,7 @@ GLU works with exported Location History ***Records*** from Google Takeout.
 
 After extraction, the exported Location History files from Google should be in **JSON** format.
 
-![Home2](/docs/images/home_ex2.png)
+![Home2](/docs/images/home_ex2.png "'home' with exported, processed, and filtered location data. Configuration.ini and reports also available.)
 
 *"home" printout with location history available, as well as processed data and reports.*
 
@@ -127,7 +127,7 @@ Timestamps, GPS coordinates, device IDs, and sources are kept from the exported 
 The resulting DataFrame is saved as a [Parquet](https://parquet.apache.org/) file, which allows for data type persistence and fast loading/saving, in the **LocationData** directory:
 `<your-directory>/LocationData/parsed_<date>.parquet`
 
-![Parse1](/docs/images/location_parse.png)
+![Parse1](/docs/images/location_parse.png "Example of location processing, 'loc_parse'")
 
 *Example processing operation, with ~500MB Records.json file*
 
@@ -185,7 +185,9 @@ Please [report](https://github.com/NBPub/GoogleLocationUtility/issues) any error
 ## Future
 Ideas for improvement and future releases:
   * ~~Allow graceful abort with `exit` input for Map settings.~~
-	* For settings loads from Configuration.ini, capture Key error for missing specifications. Provide link to Configuration.ini base as error/exit message.
+  * For settings loads from Configuration.ini, capture Key error for missing specifications. Use default delimiters?
+    * ~~Provide link to Configuration.ini base as error/exit message.~~ *added docs link and example code for downloading Configuration.ini*
+	* ~~fallback values added to settings load. filecheck with exit also added.~~
   * Implement tests
   * ~~Publish on PyPi~~
   * Utilize Jinja2 HTML templates to clean up code for reports (location report, geotag report)

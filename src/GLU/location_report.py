@@ -17,6 +17,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 def location_report(data, report_name):
+    # Settings Read
+    click.secho('Reading Report settings . . .\n', fg = 'yellow')
+    read_settings, split, figure_dpi, timegaps, device_maps = config_load('location_report')
+    
     # Folder for report
     report_folder = Path(Path.cwd(),'Outputs',f'LocationReport_{report_name}')    
 
@@ -81,12 +85,9 @@ def location_report(data, report_name):
         click.secho(f'\t{knownDevices.shape[0]} devices named out of {len(data.deviceTag.unique())}', fg='bright_magenta')
     else:
         knownDevices = pd.DataFrame()
- 
-    # Settings Read
-    click.secho('\tGenerating headers and tables', fg='bright_magenta')
-    read_settings, split, figure_dpi, timegaps, device_maps = config_load('location_report')
 
     # Begin wrting Report, Settings Summary
+    click.secho('\tGenerating headers and tables', fg='bright_magenta')
     report = f'<p style="font-weight:bold;font-size:20px;">Report Settings:</p>\
         <p><a href="{str(Path(Path.cwd(),"Configuration.ini"))}">{str(Path(Path.cwd(),"Configuration.ini"))}</a></p>\
         <div style="margin-left:5%;margin-right:50%;color:gold;background:MidnightBlue;padding:10px"> \
@@ -220,7 +221,7 @@ def location_report(data, report_name):
            
         report = f'{report} <h2>Accuracy by Source</h2> \
         <p style="margin-left:5%;">Source(s) can be removed when filtering data. . . \
-        edit <a href="{str(Path(Path.cwd(),"PGT.ini"))}">PGT.ini</a></p>   \
+        edit <a href="{str(Path(Path.cwd(),"Configuration.ini"))}">Configuration.ini</a></p>   \
         <span style="margin-left:5%;color:gold;background:MidnightBlue;padding:3px"> \
         remove_sources={val} </span></p> \
         <img src="{savename}" alt="Accuracy Distribution by Source" style="width:80%;">'        
@@ -265,7 +266,7 @@ def location_report(data, report_name):
         
         report = f'{report} <h2>Accuracy by Device</h2> \
             <p style="margin-left:5%;">Devices(s) can be removed when filtering data. . . \
-            edit <a href="{str(Path(Path.cwd(),"PGT.ini"))}">PGT.ini</a></p>   \
+            edit <a href="{str(Path(Path.cwd(),"Configuration.ini"))}">Configuration.ini</a></p>   \
             <span style="margin-left:5%;color:gold;background:MidnightBlue;padding:3px"> \
             remove_devices={val} </span></p> \
             <img src="{savename}" alt="Accuracy Distribution by Device" style="width:80%;">'

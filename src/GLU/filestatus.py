@@ -33,7 +33,11 @@ def filestatus():
         click.secho('\tEdit settings with "home --config" or "home -c"', fg='cyan')
     else:
         click.secho('Configuration File not detected, please add "Configuration.ini" to project directory.', fg='red')
-        click.secho('\tSee documentation link with "home --docs" or "home -d", open link with "home --docsRead" or "home -dR"', fg='cyan')
+        click.secho('\tDownload via CLI to directory with "curl" or "wget":', fg='cyan')
+        click.secho('curl https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -o ./Configuration.ini', fg='cyan', bg='magenta')
+        click.secho('wget https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -O ./Configuration.ini', fg='cyan', bg='magenta')
+        click.secho('\tMore info in documentation:', fg = 'cyan')
+        click.secho('\tSee link with "home --docs" or "home -d", open page with "home --docsRead" or "home -dR"', fg='cyan')
         
     # Records.json, Settings.json
     if Path(Path.cwd(),'LocationData','Records.json').exists():

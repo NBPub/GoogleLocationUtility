@@ -13,6 +13,9 @@ from exif import Image
 import click
 
 def geostrip():
+    # Settings Read
+    subfolders, open_mode = config_load('geoStrip')
+    
     # Choose Folder
     source = source_folder('geoStrip')
     if source == 'exit':
@@ -20,9 +23,6 @@ def geostrip():
     else:
         click.secho(click.format_filename(source),fg='blue')
         click.secho('geoStrip folder set\n\n', fg='green')
-
-    # Settings Read
-    subfolders, open_mode = config_load('geoStrip')
 
     # Get subdirectories, if any
     if subfolders:

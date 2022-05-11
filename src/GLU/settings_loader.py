@@ -92,7 +92,7 @@ def loc_loader_config(attempt, operation):
             click.secho("No location data available for {operation}", fg = "red")
             return 'abort'
         else:
-            click.secho('\nLocation files for map creation:',fg = 'yellow')
+            click.secho('\nLocation files for {operation}:',fg = 'yellow')
             for key,val in selection.items():
                 click.secho(f'\t{key}. {val.name}', fg = 'cyan')            
             choice = ''
@@ -109,9 +109,9 @@ def loc_loader_config(attempt, operation):
 
 def config_load(section):
     if Path(Path.cwd(), 'Configuration.ini').exists() == False:
-        click.secho(f'Configuration settings not found, searching for "Configuration.ini" in "{click.format_filename(Path.cwd())}" directory . . .', 'red')
-        exit
-    
+        click.secho(f'Configuration settings not found, searching for. . .\n"Configuration.ini" in "{click.format_filename(Path.cwd())}"\n\n', fg = 'red')
+        exit(code = 'Aborted! Enter "home" for help with configuration setup')
+ 
     config = ConfigParser()
     config.read(Path(Path.cwd(), 'Configuration.ini'))
     
@@ -146,8 +146,7 @@ def config_load(section):
             device_maps = config.getboolean('LocationReport','device_maps')
         except Exception as e:
             click.secho(f'\t\tError reading device_maps.\n{str(e)}', fg = 'red')
-            device_maps = True
-        
+            device_maps = True        
         return read_settings, split, figure_dpi, timegaps, device_maps
         
     elif section == 'location_filter':
@@ -163,7 +162,7 @@ def config_load(section):
             click.secho(f'Error reading accuracy_cutoff:\n{str(e)}\n', fg = 'red')
             cutoff = 'abort'
         # Source(s) to remove, must be comma separated.
-        if 'remove_sources' in config['LocationFilter'].keys() and config.get('LocationFilter','remove_sources') != '':
+        if 'remove_sources' in config['LocationFilter'].keys() and config.get('LocationFilter','remove_sources',fallback = '') != '':
             try:
                 remove_sources = config.get('LocationFilter','remove_sources').split(',')
             except Exception as e:
@@ -172,7 +171,7 @@ def config_load(section):
         else:
             remove_sources = None
         # Device(s) to remove, must be comma separated.
-        if 'remove_devices' in config['LocationFilter'].keys() and config.get('LocationFilter','remove_devices') != '':
+        if 'remove_devices' in config['LocationFilter'].keys() and config.get('LocationFilter','remove_devices',fallback = '') != '':
             try:
                 remove_devices =  config.get('LocationFilter','remove_devices').split(',')
             except Exception as e:
@@ -192,7 +191,10 @@ def config_load(section):
             if open_mode not in ['locate','launch', 'disable']:
                 open_mode = 'locate'
         except:
-            open_mode = 'locate'    
+            open_mode = 'locate' 
+            
+        click.secho(f'\tsubfolders: {subfolders}', fg = 'magenta',bg='yellow')
+        click.secho(f'\topen_mode: {open_mode}\n', fg = 'magenta',bg='yellow')
         return subfolders, open_mode
     
     elif section == 'geoTag':
@@ -211,42 +213,34 @@ def config_load(section):
             overwrite = False
         try: # Hemisphere Assumption
             hemi = config.get('geoTag','hemi').upper()
-            if len(hemi) > 2:
+            if len(hemi) > 2 or 'E' in hemi and 'W' in hemi or 'N' in hemi and 'S' in hemi:
                 hemi == ''
         except:
-            hemi = ''       
-
+            hemi = ''               
         # location data
-        location_data = config.get('geoTag','location_data')
+        location_data = config.get('geoTag','location_data', fallback='')
         location_data_path = loc_loader_config(location_data, 'geoTag operation')
         if type(location_data_path) != type(Path()): 
             click.secho("\nGeoTag operation aborted.", fg = "yellow")
-            exit
-
-        try: # timezone
-            timezone = config.get('geoTag','timezone')
-            timezone = 'prompt-each' if timezone in ['', None] else timezone
-            if timezone not in ['prompt', 'prompt-each']:
-                try:
-                    pd.to_datetime(time()*1E9, utc = True).tz_convert(timezone) # test conversion of dummy time, keep if successful
-                except Exception as e:
-                    click.secho(f'\nError reading specified timezone: {timezone}',fg = 'yellow')
-                    click.secho(str(e),fg = 'red')
-                    click.secho('\nTimezone specification will be prompted later.\n',fg = 'yellow')
-                    timezone = 'prompt-each'
-        except:
-            timezone = 'prompt-each'                    
-        try: # flag_time
-            flag_time = config.get('geoTag','flag_time')
+            exit(code="Location data not found.")      
+        # timezone
+        timezone = config.get('geoTag','timezone', fallback = None)
+        timezone = 'prompt-each' if timezone in ['', None] else timezone
+        if timezone not in ['prompt', 'prompt-each']:
             try:
-                flag_time = pd.Timedelta(flag_time)
+                pd.to_datetime(time()*1E9, utc = True).tz_convert(timezone) # test conversion of dummy time, keep if successful
             except Exception as e:
-                click.secho(f'\nError reading specified flag_time: {flag_time}',fg = 'yellow')
+                click.secho(f'\nError reading specified timezone: {timezone}',fg = 'yellow')
                 click.secho(str(e),fg = 'red')
-                click.secho('\nflag_time specification set to default "1 day"\n',fg = 'yellow')
-                flag_time = pd.Timedelta('1 day')               
-        except:
-            flag_time = pd.Timedelta('1 day')
+                timezone = 'prompt-each'                 
+        # flag_time
+        flag_time = config.get('geoTag','flag_time', fallback = '1 day')
+        try:
+            flag_time = pd.Timedelta(flag_time)
+        except Exception as e:
+            click.secho(f'\nError reading specified flag_time: {flag_time}',fg = 'yellow')
+            click.secho(str(e),fg = 'red')
+            flag_time = pd.Timedelta('1 day')        
         try: #flag_accuracy
             flag_accuracy = abs(config.getint('geoTag','flag_accuracy'))
             if flag_accuracy == 0:
@@ -261,15 +255,11 @@ def config_load(section):
             photomap = config.getboolean('geoTag','results_map')
         except:
             photomap = True
-        try: # Open mode
-            open_mode = config.get('geoTag','open_mode').lower()
-            if open_mode == 'launch' and not detailed_report:
-                click.secho('\n"open_mode" set to "locate", cannot "launch" if detailed_report is off. . .\n',fg = 'yellow')
-                open_mode = 'locate'
-            if open_mode not in ['locate','launch', 'disable']:
-                open_mode = 'locate'
-        except:
-            open_mode = 'locate'      
+        # Open mode
+        open_mode = config.get('geoTag','open_mode', fallback = 'locate').lower()
+        if open_mode not in ['locate','launch', 'disable']:
+            open_mode = 'locate'
+        
         click.secho('\nSettings to be applied:', fg = 'magenta', bg='yellow')
         click.secho(f'\tsubfolders={subfolders}  ', fg = 'magenta', bg='yellow')
         click.secho(f'\toverwrite={overwrite}  ', fg = 'magenta', bg='yellow')
@@ -288,7 +278,7 @@ def config_load(section):
 
     elif section == 'mapMe':
         # location data
-        location_data = config.get('Map','location_data')
+        location_data = config.get('Map','location_data', fallback='')
         location_data_path = loc_loader_config(location_data, 'map creation')
         if type(location_data_path) == type(Path()):
             click.secho(f'Using {location_data_path.name} for map creation.',fg = 'yellow')  
@@ -298,7 +288,7 @@ def config_load(section):
             return location_data_path, None, None, None, None, None
         
         # timezone
-        timezone = config.get('Map','timezone')
+        timezone = config.get('Map','timezone', fallback='')
         if timezone != '':
             try: 
                 pd.to_datetime(time()*1E9, utc = True).tz_convert(timezone) # test conversion of dummy time, keep if successful
@@ -320,14 +310,13 @@ def config_load(section):
                 click.secho(f'\nTimezone set to {timezone}',fg = 'green')
                 check = True
             except Exception as e:
-                click.secho(f'\nError reading specified timezone: {timezone}',fg = 'yellow')
+                click.secho(f'\nError reading timezone: {timezone}',fg = 'yellow')
                 click.secho(str(e),fg = 'red')  
-                check = False
-        
+                check = False      
         # begin
-        begin = config.get('Map','begin').lower()
+        begin = config.get('Map','begin', fallback='')
         if begin != '':
-            try: # begin
+            try:
                 begin = pd.Timestamp(begin, tz = timezone).floor('d')
                 click.secho(f'\nBegin set to {begin}', fg = 'green')
                 check = True
@@ -350,10 +339,9 @@ def config_load(section):
                     check = True
                 except Exception as e:
                     click.secho(f'Invalid selection: {str(e)}\n', fg = 'red')
-                    check = False 
-        
+                    check = False       
         # endin
-        endin = config.get('Map','endin').lower() 
+        endin = config.get('Map','endin', fallback='')
         if endin != '':
             try: 
                 endin = pd.Timestamp(endin, tz = timezone).floor('d')
@@ -369,7 +357,7 @@ def config_load(section):
             if endin == 'exit':
                 check = True
                 return location_data_path, timezone, begin, endin, None, None
-            elif ending == '':
+            elif endin == '':
                 check = False
             else:
                 try:
@@ -378,23 +366,19 @@ def config_load(section):
                     check = True
                 except Exception as e:
                     click.secho(f'Invalid selection: {str(e)}\n', fg = 'red')
-                    check = False
-                
-        try: # open_mode at end of operation
-            open_mode = config.get('Map','open_mode').lower()
-            open_mode = 'locate' if open_mode not in ['launch','locate','disable'] else open_mode
-        except:
-            open_mode = 'locate'
-        
+                    check = False                    
         # Map Type
-        style_by = config.get('Map','style_by').lower()
+        style_by = config.get('Map','style_by', fallback='').lower()
         while style_by not in ['time','frequency', 'exit']:
             click.secho(f'\nInvalid or not specified "style_by" setting, {style_by}', fg = 'red')
             click.secho('Valid options:',fg = 'yellow')
             click.secho('\ttime\n\tfrequency',fg = 'cyan')
             choice = input('Choose option: ').lower()
-            style_by = choice
-        
+            style_by = choice        
         if style_by != 'exit':
-            click.secho(f'\nMapping against {style_by}.', fg = 'green')   
+            click.secho(f'\nMapping against {style_by}.', fg = 'green')
+        # Open Mode
+        open_mode = config.get('Map','open_mode', fallback='locate').lower()
+        open_mode = 'locate' if open_mode not in ['launch','locate','disable'] else open_mode
+        
         return location_data_path, timezone, begin, endin, open_mode, style_by

@@ -71,8 +71,8 @@
 
 ### Map Examples
 **Time**
-![Time Map](/docs/images/time_map.png)
+![Time Map](/docs/images/time_map.png "Map styled by time")
 
 
 **Frequency**
-![Frequency Map](/docs/images/frequency_map.png)
+![Frequency Map](/docs/images/frequency_map.png "Map styled by frequency")

@@ -24,7 +24,7 @@ Various functions are available by adding an `--option` after `home`.
 
 Enter `home --help` to list all available options and their descriptions. Refer to the function pages linked above for more details.
 
-![help](/docs/images/home_help.png)
+![help](/docs/images/home_help.png "home --help")
 
 ### Inputs
 
@@ -34,12 +34,12 @@ Some functions may ask for user inputs. Inputs come in two flavors:
 2. **General Input** - requires user to specify a parameter within an operation, such as a setting or save location
 		- Users are prompted to retry, if entered input is invalid
 		- Entering `exit` will abort the operation in most cases. Otherwise try *Ctrl+C* or *Cmd+C* to exit.
+		- Many inputs can be set ahead of time and avoided by modifying [*Configuration.ini*](/Configuration.ini), see [below](/docs#configurationini) for details.
 
-![abort](/docs/images/abort_ex.png)
+![abort](/docs/images/abort_ex.png "abort operation with 'exit'")
 
 ---
 
-A guide to setting up [*Configuration.ini*](/Configuration.ini) , which resides in the root folder of the project, begins below.
 
 ## Configuration.ini
 
@@ -51,8 +51,12 @@ A guide to setting up [*Configuration.ini*](/Configuration.ini) , which resides 
 `<your-directory>/Configuration.ini` contains specifications for various GLU operations, enter `home --config` to open in default editor. 
 
 The sections of the file are listed and detailed below. Examples of input types are specified within `= <type>`, and defaults or working examples **in bold**.
+For example `<integer>` indicates that the setting should be a number, with suggested values of **5** or **333**.
+See [boolean](https://docs.python.org/3/library/configparser.html#configparser.ConfigParser.getboolean) for more information on acceptable values.
 
 ### LocationReport
+[function page](/docs/Location%20Reporting.md#location-reporting)
+
 Location reporting will continue without any specification using default values.
 
 * `accuracy_split = <integer>`
@@ -61,9 +65,13 @@ Location reporting will continue without any specification using default values.
   - Determines how many of the (largest) timegaps are displayed in a table. **1** to **50** accepted, defaults to **20**.
 * `figure_dpi = <integer>`
   - Figure resolution (matplotlib graphs), in dots per inch. **100** to **300** accpted, defaults to **100**.
+* `device_maps = <Boolean>`
+  - Option to generate [frequency] maps for each device in location data. Maps are saved as separate HTML files and linked in the report.
 		
 		
 ### LocationFilter
+[function page](/docs/Location%20Filtering.md#location-filtering)
+
 Location filtering may abort with invalid settings.
 
 * `accuracy_cutoff = <integer>`
@@ -77,6 +85,8 @@ Location filtering may abort with invalid settings.
   - *Filter operation aborts if there is an error reading sources.*
 		
 ### geoTag
+[function page](/docs/geoTag.md#geoTag)
+
 geoTag will continue without any specification using default values and will prompt for necessary inputs.
 
 * `subfolders = <Boolean>`
@@ -119,6 +129,8 @@ geoTag will continue without any specification using default values and will pro
 		
 		
 ### geoStrip
+[function page](/docs/geoTag.md#geoStrip)
+
 geoStrip will continue without any specification using default values.
 
 * `subfolders = <Boolean>`
@@ -130,6 +142,8 @@ geoStrip will continue without any specification using default values.
 		- **disable** - no questions		
 		
 ### Map
+[function page](/docs/Mapping.md#location-mapping)
+
 Location mapping will continue without any specification using default values and will prompt for necessary inputs.
 
 * `location_data = <filename>`
@@ -140,8 +154,8 @@ Location mapping will continue without any specification using default values an
 	- **frequency**  - locations within specified is rounded to hundreth decimal degree. Markers are styled (size,color,opacity) according to count of data points at a location.
 * `begin = <date>`
 * `endin = <date>`
-	- Bounding dates to select locations for mapping. Example format: **02/29/20**, *note Month/Day/Year*.
-	- *I am unsure how pandas handles this formatting for different locales. If you use Day/Month/Year formatting, please report any issues that might arise.*
+	- Bounding dates to select locations for mapping. Example format: **02/29/20** or **Feb 29 2020**
+	- *Note Month/Day/Year in abbreviated example above. I am unsure how pandas handles this formatting for different locales. If you use Day/Month/Year formatting, please report any issues that might arise.*
 * `timezone = <timezone>`
 	- examples: **Europe/Berlin** or **America/Los_Angeles**, see [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 	- will prompt for timezone if input cannot be read or is None.
