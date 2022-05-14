@@ -44,13 +44,12 @@ The following steps assume you are in `<your-directory>` and the virtual environ
 #### Option 2A - [PyPi](https://pypi.org/project/GoogleLocationUtility/) installation
 
 **2A.** Install package from PyPi. 
+- Download [Configuration.ini](https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini) as `<your-directory>/Configuration.ini`, be sure not to change the file extension.
 ```
 # Unix / macOS / Windows
 	pip install GoogleLocationUtility
 ```
-  * Download [Configuration.ini](https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini) as `<your-directory>/Configuration.ini`, be sure not to change the file extension.
-
-*Obtain Configuration.ini through command line. Use [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/). Note capitilization of "o/O" for curl/wget
+*Obtain Configuration.ini through command line using [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/). Note capitilization of "o/O" for curl/wget*
 ```
 # Unix / macOS / Windows
 	curl https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -o ./Configuration.ini
@@ -82,39 +81,41 @@ The following steps assume you are in `<your-directory>` and the virtual environ
 ---
 
 #### 3. Add Location History [Takeout](https://takeout.google.com/) export.
+- Enter `home` to ensure **GLU** is functioning, and `LocationData`, `Outputs` folders exist within `<your-directory>`
+- Request, and then extract, your Location History data from [Google Takeout](https://takeout.google.com/).
 - Copy location data, *Records.json*, and optionally *Settings.json*, into `<your-directory>/LocationData`.
-- Other exported files are not used by **GLU**.
-- Enter `home` or `home --help` to get started with **GLU**!
+  - Other exported files are not used by **GLU**.
+
 
 		
 #### 4. See [Getting Started](/docs#usage) for detailed usage instructions.
+- Filestatus and available functions are listed with `home`, all available options are listed with `home --help`.
 - Modify `<your-directory>/Configuration.ini` to specify various configuration settings.
     - Open configuration file for editing with `home --config`
 - Documentation can be accessed from **GLU** with `home --docs` or `home --docs_read`.
-- Filestatus and available functions are listed with `home`, all available options are listed with `home --help`.
+
 
 
 ## Features
-For more information about the functions available, see their respective files in [documentation](/docs#getting-started). Configuration settings for the functions are detailed in [Configuration.ini Usage](/docs/Getting%20Started.md#configurationini).
+For more information about the functions available, see their respective files in the [documentation](/docs#getting-started). Configuration settings for the functions are detailed in [Configuration.ini Usage](/docs/Getting%20Started.md#configurationini).
 GLU functions stem from the command, `home`, which provides an overview of files and functions available. `home --help` will provide all the function [options](/docs#usage).
 
+*"home" printout, with no location data to process and no processed data to use*
 ![Home1](/docs/images/home_ex1.png "'home' with Configuration.ini, but no Location History data")
-
-*"home" printout before location history added to project folder.*
 
 #### Location History Export
 GLU works with exported Location History ***Records*** from Google Takeout. 
 ***Settings*** are optional, and may provide additional information about devices, which are reported as 10-digit integers in ***Records***. 
+After extraction, the exported Location History files from Google should be in **JSON** format.
 
 ***Semantic Location History*** and ***Tombstones*** are not used by GLU. 
 
-After extraction, the exported Location History files from Google should be in **JSON** format.
-
-![Home2](/docs/images/home_ex2.png "'home' with exported, processed, and filtered location data. Configuration.ini and reports also available.)
 
 *"home" printout with location history available, as well as processed data and reports.*
+![Home2](/docs/images/home_ex2.png "'home' with exported, processed, and filtered location data. Configuration.ini and reports also available.")
 
 ---
+The *details* links will open the corresponding function page in the docs.
 
 ### Processing
   - `home --loc_parse` [details](/docs/Location%20Processing.md#location-processing)
@@ -127,7 +128,7 @@ Timestamps, GPS coordinates, device IDs, and sources are kept from the exported 
 The resulting DataFrame is saved as a [Parquet](https://parquet.apache.org/) file, which allows for data type persistence and fast loading/saving, in the **LocationData** directory:
 `<your-directory>/LocationData/parsed_<date>.parquet`
 
-![Parse1](/docs/images/location_parse.png "Example of location processing, 'loc_parse'")
+![ParseCLI](/docs/images/location_parse.png "CLI example - Location processing, 'loc_parse'")
 
 *Example processing operation, with ~500MB Records.json file*
 
@@ -139,6 +140,15 @@ Maps detailing locations of each device can optionally be generated. Reports are
 
 Each report, containing these files, is saved as a folder in the Outputs directory: `<your-directory>/Outputs/<Report Folder>`.
 
+<details>
+  <summary><i>Preview</i></summary>
+See function page for sample <a href="/docs/Location%20Reporting.md#sample-report">tables and graphs</a>.<br>CLI example:
+
+![ReportCLI](/docs/images/location_report.png "CLI example - Location reporting with device maps.")
+
+</details>
+
+
 ### Filtering
   - `home --loc_filter` [details](/docs/Location%20Filtering.md#location-filtering)
 
@@ -149,6 +159,13 @@ Notes of filter operations are stored in a CSV table: `<your-directory>/Location
 Results of filter operations are saved as a new Parquet file in the **LocationData** directory:
 `<your-directory>/LocationData/filtered.parquet`
 
+<details>
+  <summary><i>Preview</i></summary>
+  
+![FilterCLI](/docs/images/location_filter.png "CLI example - Location filtering with one removed device and one removed source.")
+
+</details>
+
 ### Maps
   - `home --loc_map` [details](/docs/Mapping.md#location-mapping)
 
@@ -156,6 +173,13 @@ Location data within an input time range can be used to generate an interactive 
 Street tiles from [OpenStreetMap](https://www.openstreetmap.org/) are used in the Plotly graphs, so zooming in provides more detail.
 
 Maps are saved in Outputs/Maps: `<your-directory>/Outputs/Maps/MAP-<style>_<date>.html`
+
+<details>
+  <summary><i>Preview</i></summary>
+  
+![MapEx](/docs/images/frequency_map.png "Map styled by frequency")
+
+</details>
 
 ### geoTag
   - `home --geoTag` [details](/docs/geoTag.md#geotag)
@@ -165,7 +189,22 @@ You made it! This was my main purpose in building this program. See a [previous 
 geoTag can add or replace GPS coordinates to an image's EXIF metadata, provided a suitable match is found in the processed location data. A detailed HTML report of an operation can be saved, including maps of tagged photos.
 If a match is made, image copies are saved in the **Outputs** directory: `<your-directory>/Outputs/<geoTag results>`
 
+<details>
+  <summary><i>Preview</i></summary>
+  
+![geoTagEx1](/docs/images/geoTag_report_0.png "Basic results table, stylized in detailed report (HTML file)")
+![geoTagEx2](/docs/images/geoTag_report_1.png "Detailed results, file-by-file summary for each folder")
+
+</details>
+
 GPS metadata can also be removed from images in a folder with `home --geoStrip` [details](/docs/geoTag.md#geoStrip). Copies are also saved in the **Outputs** directory. 
+
+<details>
+  <summary><i>Preview</i></summary>
+  
+![geoStripEx](/docs/images/geoStrip_table.png "Basic results table, saved as CSV file")
+
+</details>
 
 
 ## Limitations, Issues
@@ -183,18 +222,32 @@ Verbose errors are captured in a GeoTag detailed report.
 Please [report](https://github.com/NBPub/GoogleLocationUtility/issues) any errors you may encounter.
 
 ## Future
-Ideas for improvement and future releases:
-  * ~~Allow graceful abort with `exit` input for Map settings.~~
-  * For settings loads from Configuration.ini, capture Key error for missing specifications. Use default delimiters?
-    * ~~Provide link to Configuration.ini base as error/exit message.~~ *added docs link and example code for downloading Configuration.ini*
-	* ~~fallback values added to settings load. filecheck with exit also added.~~
-  * Implement tests
-  * ~~Publish on PyPi~~
-  * Utilize Jinja2 HTML templates to clean up code for reports (location report, geotag report)
-  * Manual geoTag function, when location match is insufficient. Input coordinates or select on map to tag photo(s)
-  * Advanced location report features 
-	* Monthly [accuracy](/docs/images/ecdf_ex1.png?raw=1) [ECDFs](/docs/images/ecdf_ex2.png?raw=1)
-	* Various analyses presented on [calplot](https://calplot.readthedocs.io/en/latest/), calendar heatmaps
+#### Completed fixes and improvements after initial upload/commit, for alpha release:
+  * ~~Improved settings load~~
+	* allow graceful exit when inputting Map settings
+	* fallback values
+	* checks for file and sections
+	* Relevant error messages and diagnosis
+  * ~~publish on PyPi~~
+    * with release, delete old version and upload alpha.
+  * ~~general fixes~~
+  * ~~documentation~~
+
+
+#### Ideas for improvement and future releases:
+  * Critical / code improvement
+    * Implement tests
+	* Utilize Jinja2 HTML templates to clean up code for reports (location report, geotag report)
+  * Python Packaging:
+    * Use *setuptools_scm* properly, harmonize packaging / PyPi / git
+	* Include Configuration.ini in PyPi distribution, *package data / data_files*
+  * Docs:	
+    * Spoof my location data to provide HTML examples of interactive maps
+  * Features:
+	* Manual geoTag function, when location match is insufficient. Input coordinates or select on map to tag photo(s)
+	* Advanced location reporting
+	  * Monthly [accuracy](/docs/images/ecdf_ex1.png?raw=1) [ECDFs](/docs/images/ecdf_ex2.png?raw=1)
+	  * Various analyses presented on [calplot](https://calplot.readthedocs.io/en/latest/), calendar heatmaps
 ---
 	
   * Option for [TimeZoneDB](https://timezonedb.com/) integration to check location vs. input timezone

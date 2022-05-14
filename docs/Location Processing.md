@@ -12,8 +12,8 @@
 [location_parse.py](/src/GLU/location_parse.py)
 
 **Contents**:
-[Invocation](#invocation) • [Requirements](#requirements) • 
-[Operations](#operations) • [Outputs](#outputs) • [Data Descriptions](#location-history-data-descriptions)
+[Invocation](#invocation) • [Requirements](#requirements) • [Operations](#operations) • 
+[Outputs](#outputs) • [CLI Example](#example) • [Data Descriptions](#location-history-data-descriptions)
 
 ## Invocation
 
@@ -54,11 +54,13 @@
 ## Outputs
 
 1. *parsed_\<date\>.parquet* in **LocationData** directory
-	
+
+## Example
+`home -p`
 <details>
-  <summary>loc_parse example</summary>
+  <summary>loc_parse CLI example</summary>
   
-![Parse1](/docs/images/location_parse.png "CLI example")
+![Parse1](/docs/images/location_parse.png "Location parse CLI example. Reporting and filtering operations can be performed directly after parsing.")
 
 *Parsing operation for ~500MB Records.json file*
 </details>

@@ -2,7 +2,7 @@
 
 **Contents**
 
-[Installation](/docs#Installation) • [Detailed Requirements](/docs#installed-packages) • [Usage](/docs#Usage) • [Configuration.ini - GLU settings](/docs#configurationini)
+[Installation](/docs#Installation) • [Usage](/docs#Usage) • [Configuration.ini - GLU settings](/docs#configurationini)  • [Detailed Requirements](/docs#installed-packages) 
 
 **Function Pages**
 + [Location Processing](/docs/Location%20Processing.md#location-processing)
@@ -15,7 +15,7 @@
 
 ## Installation
 
-See [Overview](/README.md#installation-quickstart) for installation instructions and steps for activating a virtual environment in the project folder.
+See [Overview](/README.md#installation-quickstart) for installation instructions and steps for activating a virtual environment in the project folder. A list of all installed packages is provided [below](/docs#installed-packages).
 
 ## Usage
 
@@ -31,10 +31,11 @@ Enter `home --help` to list all available options and their descriptions. Refer 
 Some functions may ask for user inputs. Inputs come in two flavors:
 
 1. **y/n** - takes the next keystroke as answer, anything other than "y" is interpreted as "n"
-2. **General Input** - requires user to specify a parameter within an operation, such as a setting or save location
-		- Users are prompted to retry, if entered input is invalid
-		- Entering `exit` will abort the operation in most cases. Otherwise try *Ctrl+C* or *Cmd+C* to exit.
-		- Many inputs can be set ahead of time and avoided by modifying [*Configuration.ini*](/Configuration.ini), see [below](/docs#configurationini) for details.
+2. **General Input** 
+	- requires user to specify a parameter within an operation, such as a setting or save location
+	- Users are prompted to retry, if entered input is invalid
+	- Entering `exit` will abort the operation in most cases. Otherwise try *Ctrl+C* or *Cmd+C* to exit.
+	- Many inputs can be set ahead of time and avoided by modifying [*Configuration.ini*](/Configuration.ini), see the [next section](/docs#configurationini) for details.
 
 ![abort](/docs/images/abort_ex.png "abort operation with 'exit'")
 
@@ -48,12 +49,12 @@ Some functions may ask for user inputs. Inputs come in two flavors:
 [geoTag](/docs#geoTag) • [geoStrip](/docs#geoStrip) • [Map](/docs#Map)
 <br/><br/>
 
-`<your-directory>/Configuration.ini` contains specifications for various GLU operations, enter `home --config` to open in default editor. 
+[`<your-directory>/Configuration.ini`](/Configuration.ini) contains specifications for various GLU operations, enter `home --config` to open in default editor. 
 
 The sections of the file are listed and detailed below. Examples of input types are specified within `= <type>`, and defaults or working examples **in bold**.
 
 For example `<integer>` indicates that the setting should be a number, and suggested values might be **5** or **333**.
-See [boolean](https://docs.python.org/3/library/configparser.html#configparser.ConfigParser.getboolean) for more information on acceptable values.
+See [Boolean](https://docs.python.org/3/library/configparser.html#configparser.ConfigParser.getboolean) for more information on acceptable Boolean values.
 
 ---
 
@@ -67,7 +68,7 @@ See [boolean](https://docs.python.org/3/library/configparser.html#configparser.C
 * `figure_dpi = <integer>`
   - Figure resolution (matplotlib graphs), in dots per inch. **100** to **300** accpted, defaults to **100**.
 * `device_maps = <Boolean>`
-  - Option to generate [frequency] maps for each device in location data. Maps are saved as separate HTML files and linked in the report.
+  - Option to generate [frequency](/docs/Mapping.md#frequency) maps for each device in location data. Maps are saved as separate HTML files and linked in the report.
 		
 ---
 
@@ -95,7 +96,7 @@ See [boolean](https://docs.python.org/3/library/configparser.html#configparser.C
   - Should the GPS match be written over a photo's existing GPS data? Defaults to **False**
 * `hemi = <N or S><E or W>`
   - Assume N/S and/or E/W hemisphere for photo's existing GPS tags. Default is None. 
-  - Entry is ignored if more than 2 characters, **XYZ**. Only **N, S, E, W** recognized for hemispheres.
+  -  Only **N, S, E, W** recognized for hemispheres. Entry is ignored if more than 2 characters, **XYZ**, or if it contains both **N** and **S** or both **E** and **W**.
 	- EXIF tags are saved in [DMS](https://en.wikipedia.org/wiki/Geographic_coordinate_system#Length_of_a_degree), and sometimes the reference is missing which specifies if [DD](https://en.wikipedia.org/wiki/Decimal_degrees) should be positive or negative.
   - examples: **NW** or **N** or **E** or **SE** 
 * `location_data = <filename>`
@@ -142,7 +143,7 @@ See [boolean](https://docs.python.org/3/library/configparser.html#configparser.C
 ---
 		
 ### Map
-[function page](/docs/Mapping.md#location-mapping) | *Location mapping will continue without any specification using default values and will prompt for necessary inputs.*
+[function page](/docs/Mapping.md#location-mapping) | *Location mapping will continue without any specification and will prompt for necessary inputs.*
 
 * `location_data = <filename>`
 	- Specify processed location data to use. If None or not found, will prompt selection of available files in LocationData directory. 

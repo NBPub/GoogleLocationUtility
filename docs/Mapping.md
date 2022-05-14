@@ -12,8 +12,8 @@
 [mapMe.py](/src/GLU/mapMe.py)
 
 **Contents**:
-[Invocation](#invocation) • [Requirements](#requirements) • 
-[Operations](#operations) • [Outputs](#outputs) • [Sample](#map-examples)
+[Invocation](#invocation) • [Requirements](#requirements) • [Operations](#operations) • 
+[Outputs](#outputs) • [CLI Example](#example) • [Sample](#map-samples)
 
 ## Invocation
 
@@ -67,9 +67,18 @@
 
 ## Outputs
 
-1. *MAP-\<style_by\>_\<date\>* in **Outputs/Maps** directory
+1. *MAP-\<style_by\>_\<date\>.html* in **Outputs/Maps/** directory
 
-### Map Examples
+## Example
+`home -m`
+<details>
+  <summary>loc_map CLI example</summary>
+  
+![Map CLI](/docs/images/map.png "Location mapping with minimal settings in Configuration.ini")
+
+</details>
+
+## Map Samples
 **Time**
 ![Time Map](/docs/images/time_map.png "Map styled by time")
 

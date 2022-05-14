@@ -33,6 +33,8 @@
 #### Configuration.ini  \[geoTag\]
 *If a setting specification is empty or cannot be read, the default will be used. After input settings are read, they are presented to user to confirm before continuing with geoTag operation.*
 
+*If the entire geoTag section is missing from Configuration.ini, the operation will be aborted.*
+
 | Parameter | Accepted | Default | Description |
 | :----: | --- | --- | --- |
 | **subfolders** | Boolean | `True` | If sub-directories are present in specified folder, should their photos also be geoTagged? |
@@ -50,21 +52,25 @@
 	
 ## Operations
 
-1. **Validate Input Folder**, **Read Configuration.ini settings**
-	- Display intended geoTag parameters, y/n prompt to continue
+1. Read **Configuration.ini** settings
 	- Input prompts as required for unspecified settings
+	- Display intended geoTag parameters, y/n prompt to continue
 
-2. **Gather Candidate Images**
+	
+2. Prompt for and validate **Photo Folder**
+	- Enter folder with photos / sub-directories with photos to geoTag
 
-3. **Location Match**, **GPS Tag**
+3. **Gather Candidate Images**
+
+4. **Location Match**, **GPS Tag**
 	- find best location record for image
 	- attempt to add GPS EXIF tags to cadidate images with matches
 	
-4. **Save Copies**, **Results Report**
+5. **Save Copies**, **Results Report**
 	- Successfully tagged photos are saved in the **Outputs** folder, `Outputs/geotag_<date>`
 	- Summary of results, reports, and maps are also saved in the geoTag folder.
 	
-5. **Exit Options**
+6. **Exit Options**
 	- Possible option to open report folder or open report in default browser.
 		- y/n prompt, pressing anything other than "y" is interpreted as "n".
 
@@ -80,7 +86,7 @@
 ![geoTag](/docs/images/geoTag_table.png "Basic results table, organized by folder")
 
 ## Example
-
+`home -pgT`
 <details>
   <summary>geoTag CLI Walkthrough</summary>
   
@@ -130,7 +136,6 @@ An optional HTML detailed report can be generated with each geoTag operation. It
 
 ---
 
-
 # geoStrip
 
 [geostrip.py](/src/GLU/geostrip.py)
@@ -162,9 +167,9 @@ An optional HTML detailed report can be generated with each geoTag operation. It
 
 ## Operations
 
-1. **Validate Input Folder**, **Read Configuration.ini settings**
+1. Read **Configuration.ini** settings
 
-2. **Gather Candidate Images**
+2. **Validate Photo Folder**, **Gather Candidate Images**
 
 3. **Remove GPS Information**
 	

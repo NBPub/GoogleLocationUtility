@@ -11,8 +11,8 @@
 [location_report.py](/src/GLU/location_report.py)
 
 **Contents**:
-[Invocation](#invocation) • [Requirements](#requirements) • 
-[Operations](#operations) • [Outputs](#outputs) • [Sample](#sample-report)
+[Invocation](#invocation) • [Requirements](#requirements) • [Operations](#operations) • 
+[Outputs](#outputs) • [CLI Example](#example) • [Sample](#sample-report)
 
 
 ## Invocation
@@ -40,12 +40,14 @@
 	
 ## Operations
 
-1. Determine save folder in **Outputs** directory, prompt for rename or overwrite if needed.
+1. Read **Configuration.ini** settings
 
-2. **Name Devices, Read Configuration.ini settings**
+2. Determine save folder in **Outputs** directory, prompt for rename or overwrite if needed.
+
+3. **Name Devices**
 	- Attempt to add device information to report by matching deviceTag in location data with information in *Settings.json*.
 
-3. **Calculations, Graphing**
+4. **Calculations, Graphing**
 	- Basic stats for top of report:
 		- Time span, observations per hour
 		- Data proportion within / outside accuracy split
@@ -56,14 +58,14 @@
 		- Accuracy distributions for each Devices
 		- Source distribution for each Devices
 
-4. **Device Maps**
+5. **Device Maps**
 	- Generate [frequency maps](/docs/Mapping.md#frequency) for each device.
 	
-5. **Report Writing**
+6. **Report Writing**
 	- Combine information gathered above into HTML file.
 	- Save within determined save folder in **Outputs** directory.
 
-6. **Exit Options**
+7. **Exit Options**
 	- Possible option to open report folder or open report in default HTML browser.
 		- y/n prompt, pressing anything other than "y" is interpreted as "n".
 
@@ -72,12 +74,14 @@
 1. ***LocationReport_\<type\>_\<date\>*** in **Outputs** directory, containing . . .
 	- Report as HTML file, displaying all graphs and linking to all maps
 	- Graphs as PNG files
-	- device maps as HTML files within "maps" sub-directory
-
+	- device maps as HTML files within "maps" sub-directory of location report folder
+	
+## Example
+`home -r`
 <details>
-  <summary>loc_report example</summary>
+  <summary>loc_report CLI example</summary>
   
-![Report](/docs/images/location_report.png)
+![ReportCLI](/docs/images/location_report.png "Location reporting with device maps.")
 
 </details>
 

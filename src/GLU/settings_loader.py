@@ -89,7 +89,7 @@ def loc_loader_config(attempt, operation):
                 selection[str(counter)] = val
                 counter += 1
         if len(selection) == 0:
-            click.secho("No location data available for {operation}", fg = "red")
+            click.secho(f"\nNo location data available for {operation}", fg = "red")
             return 'abort'
         else:
             click.secho('\nLocation files for {operation}:',fg = 'yellow')
@@ -116,40 +116,50 @@ def config_load(section):
     config.read(Path(Path.cwd(), 'Configuration.ini'))
     
     if section == 'location_report':
-        read_settings = [f'{key}={val}' for key,val in config['LocationReport'].items()]
-        read_settings = '<br>'.join(read_settings)
-        read_settings = f'[LocationReport]<br>{read_settings}'
-        # Accuracy Split, default to 565
-        try:
-            split = abs(config.getint('LocationReport','accuracy_split'))
-        except Exception as e:
-            click.secho(f'\t\tError reading accuracy_split.\n{str(e)}', fg = 'red')
-            split = 565
-        # Figure DPI, accept 1-50, default to 20
-        try:
-            figure_dpi = config.getint('LocationReport','figure_dpi')
-            figure_dpi = 300 if figure_dpi > 300 else figure_dpi
-            figure_dpi = 100 if figure_dpi < 100 else figure_dpi
-        except Exception as e:
-            click.secho(f'\t\tError reading figure_dpi.\n{str(e)}', fg = 'red')
-            figure_dpi = 100
-        # Notable TimeGaps, accept 1-50, default to 20
-        try:
-            timegaps = config.getint('LocationReport','notable_timegaps')
-            timegaps = 50 if timegaps > 50 else timegaps
-            timegaps = 1 if timegaps < 1 else timegaps
-        except Exception as e:
-            click.secho(f'\t\tError reading notable_timegaps.\n{str(e)}', fg = 'red')
-            timegaps = 20
-        # Device Maps, defaults to True    
-        try:
-            device_maps = config.getboolean('LocationReport','device_maps')
-        except Exception as e:
-            click.secho(f'\t\tError reading device_maps.\n{str(e)}', fg = 'red')
-            device_maps = True        
-        return read_settings, split, figure_dpi, timegaps, device_maps
+        if 'LocationReport' not in config:
+            click.secho('LocationReport settings not found in Configuration.ini!', fg = 'red')
+            click.secho('\tEnter "home" for more information or "home --config" to edit Configuration.ini', fg = 'magenta')
+            click.secho('\tOperation will continue with default settings \n', fg = 'yellow')
+            return 'Not found! Using defaults.', 565, 100, 20, True
+        else:
+            read_settings = [f'{key}={val}' for key,val in config['LocationReport'].items()]
+            read_settings = '<br>'.join(read_settings)
+            read_settings = f'[LocationReport]<br>{read_settings}'
+            # Accuracy Split, default to 565
+            try:
+                split = abs(config.getint('LocationReport','accuracy_split'))
+            except Exception as e:
+                click.secho(f'\t\tError reading accuracy_split.\n{str(e)}', fg = 'red')
+                split = 565
+            # Figure DPI, accept 1-50, default to 20
+            try:
+                figure_dpi = config.getint('LocationReport','figure_dpi')
+                figure_dpi = 300 if figure_dpi > 300 else figure_dpi
+                figure_dpi = 100 if figure_dpi < 100 else figure_dpi
+            except Exception as e:
+                click.secho(f'\t\tError reading figure_dpi.\n{str(e)}', fg = 'red')
+                figure_dpi = 100
+            # Notable TimeGaps, accept 1-50, default to 20
+            try:
+                timegaps = config.getint('LocationReport','notable_timegaps')
+                timegaps = 50 if timegaps > 50 else timegaps
+                timegaps = 1 if timegaps < 1 else timegaps
+            except Exception as e:
+                click.secho(f'\t\tError reading notable_timegaps.\n{str(e)}', fg = 'red')
+                timegaps = 20
+            # Device Maps, defaults to True    
+            try:
+                device_maps = config.getboolean('LocationReport','device_maps')
+            except Exception as e:
+                click.secho(f'\t\tError reading device_maps.\n{str(e)}', fg = 'red')
+                device_maps = True        
+            return read_settings, split, figure_dpi, timegaps, device_maps
         
     elif section == 'location_filter':
+        if 'LocationFilter' not in config:
+            click.secho('LocationReport settings not found in Configuration.ini!', fg = 'red')
+            click.secho('\tEnter "home" for more information or "home --config" to edit Configuration.ini', fg = 'magenta')
+            exit(code = 'Location Filtering aborted!')            
         read_settings = [f'\t{key}={val}' for key,val in config['LocationFilter'].items()]
         read_settings = '\n'.join(read_settings)
         click.secho('[LocationFilter]', fg = 'yellow', bg = 'blue')
@@ -182,36 +192,40 @@ def config_load(section):
         return cutoff, remove_sources, remove_devices
     
     elif section =='geoStrip':
-        try:
-            subfolders = config.getboolean('geoStrip','subfolders')
-        except:
-            subfolders = True
+        if 'geoStrip' not in config:
+            click.secho('geoStrip settings not found in Configuration.ini!', fg = 'red')
+            click.secho('\tEnter "home" for more information or "home --config" to edit Configuration.ini', fg = 'magenta')
+            click.secho('\tOperation will continue with default settings \n', fg = 'yellow')
+        subfolders = config.getboolean('geoStrip','subfolders', fallback = True)
         try:
             open_mode = config.get('geoStrip','open_mode').lower()
             if open_mode not in ['locate','launch', 'disable']:
                 open_mode = 'locate'
         except:
-            open_mode = 'locate' 
-            
+            open_mode = 'locate'            
         click.secho(f'\tsubfolders: {subfolders}', fg = 'magenta',bg='yellow')
         click.secho(f'\topen_mode: {open_mode}\n', fg = 'magenta',bg='yellow')
         return subfolders, open_mode
     
     elif section == 'geoTag':
+        if 'geoTag' not in config:
+            click.secho('geoTag settings not found in Configuration.ini!', fg = 'red')
+            click.secho('\tEnter "home" for more information or "home --config" to edit Configuration.ini', fg = 'magenta')
+            exit(code = 'geoTag operation aborted!')   
+        
         read_settings = [f'\t{key}={val}  ' for key,val in config['geoTag'].items()]
         read_settings = '\n'.join(read_settings)
         click.secho('Input Settings:', fg = 'yellow', bg = 'magenta')
         click.secho(read_settings, fg = 'yellow', bg = 'magenta')  
 
-        try: # Subfolders
-           subfolders = config.getboolean('geoTag','subfolders')
-        except:
-           subfolders = True
-        try: # Overwrite
-            overwrite = config.getboolean('geoTag','overwrite')
-        except:
-            overwrite = False
-        try: # Hemisphere Assumption
+        # Subfolders, Overwrite, HTML Report, Results Map
+        subfolders = config.getboolean('geoTag','subfolders', fallback = True)
+        overwrite = config.getboolean('geoTag','overwrite', fallback = True)
+        detailed_report = config.getboolean('geoTag','detailed_report', fallback = True)
+        photomap = config.getboolean('geoTag','results_map', fallback = True)
+        
+        # Hemisphere Assumption
+        try:
             hemi = config.get('geoTag','hemi').upper()
             if len(hemi) > 2 or 'E' in hemi and 'W' in hemi or 'N' in hemi and 'S' in hemi:
                 hemi == ''
@@ -221,8 +235,7 @@ def config_load(section):
         location_data = config.get('geoTag','location_data', fallback='')
         location_data_path = loc_loader_config(location_data, 'geoTag operation')
         if type(location_data_path) != type(Path()): 
-            click.secho("\nGeoTag operation aborted.", fg = "yellow")
-            exit(code="Location data not found.")      
+            exit(code="geoTag operation aborted!")      
         # timezone
         timezone = config.get('geoTag','timezone', fallback = None)
         timezone = 'prompt-each' if timezone in ['', None] else timezone
@@ -247,14 +260,6 @@ def config_load(section):
                 flag_accuracy = None
         except:
             flag_accuracy = None
-        try: # HTML Report, yes/no
-            detailed_report = config.getboolean('geoTag','detailed_report')
-        except:
-            detailed_report = True   
-        try: # Map
-            photomap = config.getboolean('geoTag','results_map')
-        except:
-            photomap = True
         # Open mode
         open_mode = config.get('geoTag','open_mode', fallback = 'locate').lower()
         if open_mode not in ['locate','launch', 'disable']:
@@ -277,6 +282,11 @@ def config_load(section):
                flag_accuracy, flag_time, detailed_report, open_mode, photomap           
 
     elif section == 'mapMe':
+        if 'Map' not in config:
+            click.secho('Map settings not found in Configuration.ini!', fg = 'red')
+            click.secho('\tEnter "home --config" for helping setting up Configuration.ini', fg = 'magenta')
+            click.secho('\tInputs for various settings will be prompted . . . \n', fg = 'yellow')
+            
         # location data
         location_data = config.get('Map','location_data', fallback='')
         location_data_path = loc_loader_config(location_data, 'map creation')

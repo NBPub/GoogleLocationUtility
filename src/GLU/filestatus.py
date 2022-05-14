@@ -7,6 +7,7 @@ Created on Fri Mar 25 2022
 
 import click
 from pathlib import Path
+from configparser import ConfigParser
 
 # Folder Check, LocationData and Outputs. Can this be moved to some kind of initialization step?
 def folder_check():
@@ -30,7 +31,17 @@ def filestatus():
     # Configuration.ini
     if Path(Path.cwd(),'Configuration.ini').exists():
         click.secho('Configuration File ready: "Configuration.ini"', fg='green')
-        click.secho('\tEdit settings with "home --config" or "home -c"', fg='cyan')
+        click.secho('\tEdit settings with "home --config" or "home -c"', fg='cyan')       
+        config = ConfigParser()
+        config.read(Path(Path.cwd(), 'Configuration.ini'))
+        missing = False
+        for section in ['LocationReport','LocationFilter','geoTag','geoStrip', 'Map']:
+            if section not in config:
+                click.secho(f'\t\t{section} missing from Configuration.ini!', fg = 'red')
+                missing = True
+        if missing == True:
+            click.secho('  See example "Configuration.ini":', fg = 'magenta')
+            click.secho('  https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini', fg = 'blue')
     else:
         click.secho('Configuration File not detected, please add "Configuration.ini" to project directory.', fg='red')
         click.secho('\tDownload via CLI to directory with "curl" or "wget":', fg='cyan')

@@ -12,8 +12,8 @@
 [location_filter.py](/src/GLU/location_filter.py)
 
 **Contents**:
-[Invocation](#invocation) • [Requirements](#requirements) • 
-[Operations](#operations) • [Outputs](#outputs) • [Overwrite Invocation](#overwrite-without-prompt)
+[Invocation](#invocation) • [Requirements](#requirements) • [Operations](#operations) • 
+[Outputs](#outputs) • [CLI Example](#example) • [Overwrite Invocation](#overwrite-without-prompt)
 
 ## Invocation
 
@@ -38,10 +38,11 @@
 
 ## Operations
 
-1. Check for existing filtered data, prompt for overwrite.
-
-2. **Read Configuration.ini settings**
+1. Read **Configuration.ini** settings
 	- Display intended filtration parameters, y/n prompt to continue
+	
+2. Check for existing filtered data, prompt for overwrite.
+	- Prompt can be [skipped](#overwrite-without-prompt).
 
 3. **Load Data, Apply Filters**
 	- Basic before/after stats displayed
@@ -58,6 +59,15 @@
 ## Outputs
 
 1. *filtered.parquet* in **LocationData** directory
+
+## Example
+`home -f`
+<details>
+  <summary>loc_filter CLI example</summary>
+  
+![Filter](/docs/images/location_filter.png "Location filtering with one removed device and one removed source.")
+
+</details>
 
 ## Overwrite without prompt
 

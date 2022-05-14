@@ -23,7 +23,7 @@ def location_filter(data, overwrite):
         from .settings_loader import loc_loader
         parse_path = loc_loader('filtering')
         if parse_path == 'abort':
-            return "Filter operation aborted", 'yellow'
+            return "Filter operation aborted!", 'yellow'
     elif overwrite and overwrite != 'OW':
         parse_path = overwrite
        
