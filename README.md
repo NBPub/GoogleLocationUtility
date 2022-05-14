@@ -49,7 +49,7 @@ The following steps assume you are in `<your-directory>` and the virtual environ
 # Unix / macOS / Windows
 	pip install GoogleLocationUtility
 ```
-*Obtain Configuration.ini through command line using [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/). Note capitilization of "o/O" for curl/wget*
+*Obtain Configuration.ini through command line. Use [curl](https://curl.se/) or [wget](https://www.gnu.org/software/wget/). Note capitilization of "o/O" for curl/wget*
 ```
 # Unix / macOS / Windows
 	curl https://raw.githubusercontent.com/NBPub/GoogleLocationUtility/main/Configuration.ini -o ./Configuration.ini
