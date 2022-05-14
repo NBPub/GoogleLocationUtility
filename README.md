@@ -97,7 +97,7 @@ The following steps assume you are in `<your-directory>` and the virtual environ
 
 
 ## Features
-For more information about the functions available, see their respective files in the [documentation](/docs#getting-started). Configuration settings for the functions are detailed in [Configuration.ini Usage](/docs/Getting%20Started.md#configurationini).
+For more information about the functions available, see their respective files in the [documentation](/docs#getting-started). Configuration settings for the functions are detailed in [Configuration.ini Usage](/docs#configurationini).
 GLU functions stem from the command, `home`, which provides an overview of files and functions available. `home --help` will provide all the function [options](/docs#usage).
 
 *"home" printout, with no location data to process and no processed data to use*
