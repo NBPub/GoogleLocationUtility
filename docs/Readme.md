@@ -35,13 +35,7 @@ Some functions may ask for user inputs. Inputs come in two flavors:
 	- requires user to specify a parameter within an operation, such as a setting or save location
 	- Users are prompted to retry, if entered input is invalid
 	- Entering `exit` will abort the operation in most cases. Otherwise try *Ctrl+C* or *Cmd+C* to exit.
-<<<<<<< HEAD
 	- Many inputs can be set ahead of time and avoided by modifying [*Configuration.ini*](/Configuration.ini), see the [next section](/docs#configurationini) for details.
-=======
-	- Many inputs can be set ahead of time and avoided by modifying [*Configuration.ini*](/Configuration.ini), see [below](/docs#configurationini) for details.
->>>>>>> 0e4edbb5d301e70aebc2541c7bc082355647cb22
-
-![abort](/docs/images/abort_ex.png "abort operation with 'exit'")
 
 ---
 

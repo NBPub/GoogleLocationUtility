@@ -169,7 +169,7 @@ Results of filter operations are saved as a new Parquet file in the **LocationDa
 ### Maps
   - `home --loc_map` [details](/docs/Mapping.md#location-mapping)
 
-Location data within an input time range can be used to generate an interactive HTML map with panning and zooming capabilities. Map markers can be styled by "time" or "accuracy". 
+Location data within an input time range can be used to generate an interactive HTML map with panning and zooming capabilities. Map markers can be styled by "time" or "frequency". 
 Street tiles from [OpenStreetMap](https://www.openstreetmap.org/) are used in the Plotly graphs, so zooming in provides more detail.
 
 Maps are saved in Outputs/Maps: `<your-directory>/Outputs/Maps/MAP-<style>_<date>.html`
